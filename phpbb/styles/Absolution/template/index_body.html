@@ -1,0 +1,91 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- EVENT index_body_markforums_before -->
+
+<!-- EVENT index_body_markforums_after -->
+
+<!-- INCLUDE forumlist_body.html -->
+
+<!-- EVENT index_body_forumlist_body_after -->
+
+<div style="text-align: center; margin-bottom: 15px;">
+<!-- IF U_MARK_FORUMS -->
+	<div class="action-bar compact">
+		<a href="{U_MARK_FORUMS}" class="mark-read" accesskey="m" data-ajax="mark_forums_read">{L_MARK_FORUMS_READ}</a>
+	</div>
+<!-- ENDIF -->
+{CURRENT_TIME}<br /><!-- EVENT overall_footer_timezone_before -->{S_TIMEZONE}<!-- EVENT overall_footer_timezone_after --></div>
+
+<div class="forabg">
+    <div class="inner">
+    <ul class="topiclist">
+        <li class="header">
+            <dl class="icon">
+                <dt>
+                    <div class="list-inner">
+                        {L_INFORMATION}
+                    </div>
+                </dt>
+            </dl>
+    </ul>
+    <ul class="topiclist forums">
+		<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->    
+            <li class="row">
+                <form method="post" action="{S_LOGIN_ACTION}">
+                    <fieldset class="quick-login">
+                        <label for="username"><span><i class="fa fa-lock"></i> {L_USERNAME}{L_COLON}</span> <input type="text" tabindex="1" name="username" id="username" size="10" class="inputbox" title="{L_USERNAME}" /></label>
+                        <label for="password"><span>{L_PASSWORD}{L_COLON}</span> <input type="password" tabindex="2" name="password" id="password" size="10" class="inputbox" title="{L_PASSWORD}" autocomplete="off" /></label>
+                        <!-- IF U_SEND_PASSWORD -->
+                            <a href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a>
+                        <!-- ENDIF -->
+                        <!-- IF S_AUTOLOGIN_ENABLED -->
+                            <span class="responsive-hide">|</span> <label for="autologin">{L_LOG_ME_IN} <input type="checkbox" tabindex="4" name="autologin" id="autologin" /></label>
+                        <!-- ENDIF -->
+                        <input type="submit" tabindex="5" name="login" value="{L_LOGIN}" class="button2" />
+                        {S_LOGIN_REDIRECT}
+                    </fieldset>
+                </form>                
+            </li>
+        <!-- ENDIF -->
+        <!-- IF S_DISPLAY_ONLINE_LIST -->
+        <li class="row">
+            <div class="stat-block online-list">
+                <p>
+                    <!-- EVENT index_body_block_online_prepend -->
+                    <i class="fa fa-tachometer"></i> {TOTAL_USERS_ONLINE} ({L_ONLINE_EXPLAIN})<br />{RECORD_USERS}<br /> <br />{LOGGED_IN_USER_LIST}
+                    <!-- IF LEGEND --><br /><strong>{L_LEGEND}{L_COLON} {LEGEND}</strong><!-- ENDIF -->
+                    <!-- EVENT index_body_block_online_append -->
+                </p>
+            </div>        	
+        </li>
+        <!-- ENDIF -->
+        <!-- IF NEWEST_USER -->
+        <li class="row">
+            <div class="stat-block statistics">
+                <p>
+                    <!-- EVENT index_body_block_stats_prepend -->
+                    <i class="fa fa-line-chart"></i> {TOTAL_POSTS} &bull; {TOTAL_TOPICS} &bull; {TOTAL_USERS} &bull; {NEWEST_USER}
+                    <!-- EVENT index_body_block_stats_append -->
+                </p>
+            </div>        
+        </li>
+        <!-- ENDIF -->
+        <!-- IF S_DISPLAY_BIRTHDAY_LIST and .birthdays -->
+		<li class="row">
+            <div class="stat-block birthday-list">
+                <p>
+                    <!-- EVENT index_body_block_birthday_prepend -->
+                    <!-- IF .birthdays -->{L_CONGRATULATIONS}{L_COLON} <strong><!-- BEGIN birthdays -->{birthdays.USERNAME}<!-- IF birthdays.AGE !== '' --> ({birthdays.AGE})<!-- ENDIF --><!-- IF not birthdays.S_LAST_ROW -->, <!-- ENDIF --><!-- END birthdays --></strong><!-- ELSE -->{L_NO_BIRTHDAYS}<!-- ENDIF -->
+                    <!-- EVENT index_body_block_birthday_append -->
+                </p>
+            </div>        
+        </li>        
+        <!-- ENDIF -->
+    </ul>
+	</div>
+</div>
+<!-- EVENT index_body_stat_blocks_before -->
+
+<!-- EVENT index_body_stat_blocks_after -->
+
+<!-- INCLUDE overall_footer.html -->

@@ -1,0 +1,18 @@
+/*  phpBB3 Style Sheet
+    --------------------------------------------------------------
+	Style name:			Green-Style
+	Based on style:		prosilver (the default phpBB 3.1.x style)
+	Original author:	Tom Beddard ( http://www.subblue.com/ )
+	Modified by:		Joyce&Luna ( http://www.phpbb-style-design.de/ )
+    --------------------------------------------------------------
+*/
+
+@import url("common.css");
+@import url("../../prosilver/theme/links.css");
+@import url("content.css");
+@import url("../../prosilver/theme/buttons.css");
+@import url("../../prosilver/theme/cp.css");
+@import url("forms.css");
+@import url("colours.css");
+@import url("imageset.css");
+@import url("greenstyle.css");

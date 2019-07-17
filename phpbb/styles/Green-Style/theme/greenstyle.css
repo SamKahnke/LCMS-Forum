@@ -1,0 +1,144 @@
+/* my css
+---------------------------------- */
+
+.navbar a:link			{ color: #FAFAFA; }
+.navbar a:visited		{ color: #FAFAFA; }
+.navbar a:hover			{ color: #FAFAFA; }
+.navbar a:active		{ color: #FAFAFA; }
+
+.copyright a:link		{ color: #555; }
+.copyright a:visited	{ color: #555; }
+.copyright a:hover		{ color: #555; }
+.copyright a:active		{ color: #555; }
+
+#greenstyle_wrap {
+	background-color: #e5e4ac;
+	margin: 1px auto;
+	width: 79%;
+	padding: 16px;
+	box-shadow: 0 -1px 6px 2px rgba(2, 2, 2, 0.7);
+	clear: both;
+}
+
+/* header-top */
+.greenstyle-image-wrapper {
+	box-shadow: 0 0 6px 2px rgba(2, 2, 2, 0.7);
+	display: block;
+	height: 100%;
+	margin: -5px auto;
+	position: relative;
+	width: 81% !important;
+}
+
+.forabg {
+	border-radius: 7px;
+}
+
+/* black-silver responsiv */
+@media (max-width: 650px) {
+#greenstyle_wrap {
+	width: 90%;
+	margin-top: -5px;
+}
+}
+
+@media (max-width: 768px) {
+#greenstyle_wrap {
+	width: 90%;
+}
+
+.greenstyle-image-wrapper {
+	margin: -5px auto -4px;
+	width: 99.8% !important;
+}
+}
+
+@media only screen and (max-width: 768px) {
+	#greenstyle_wrap {
+	background-color: #e5e4ac;
+	padding: 12px;
+	margin: -4px auto;
+	width: auto;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 895px) {
+	#greenstyle_wrap{
+	background-color: #e5e4ac;
+	margin: 2px auto;
+	padding: 6px;
+	width: 98%;
+	}
+
+.greenstyle-image-wrapper {
+	display: block;
+	height: auto;
+	margin: -5px auto -4px;
+	position: relative;
+	width: 99.8% !important;
+}
+
+h1 {
+	margin-top: 0;
+}
+}
+
+@media (max-width: 1220px) {
+.navbar {
+	margin-left: -12px;
+	margin-right: -12px;
+	}
+
+.headerbar {
+	margin-left: -12px;
+	margin-right: -12px;
+	}
+
+#wrap {
+	margin-bottom: 10px;
+}
+
+#greenstyle_wrap {
+	margin: -8px auto 2px;
+}
+}
+
+@media (max-width: 650px) {
+.greenstyle-image-wrapper {
+	display: block;
+	height: 100%;
+	margin: -5px auto -4px;
+	position: relative;
+	width: 99.8% !important;
+}
+}
+
+@media (min-width: 895px) and (max-width: 1400px) {
+.greenstyle-image-wrapper {
+	margin: -5px auto -5px 9%;
+	width: 82% !important;
+}
+}
+
+@media (min-width: 650px) and (max-width: 700px) {
+ul.topiclist dt .list-inner {
+	margin-right: 9px;
+	min-height: 28px;
+}
+
+.greenstyle-image-wrapper {
+	display: block;
+	height: 100%;
+	margin: -5px auto -4px;
+	position: relative;
+	width: 99.8% !important;
+}
+
+.responsive-show {
+	display: block !important;
+}
+
+li.row .responsive-show strong {
+	color: transparent;
+}
+}
