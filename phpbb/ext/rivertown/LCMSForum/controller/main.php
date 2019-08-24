@@ -11,6 +11,7 @@ class main
         $this->template = $template;
         $this->user = $user;
     }
+    console_log("hi");
 }
 
 ?>
