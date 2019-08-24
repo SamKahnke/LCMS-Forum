@@ -156,7 +156,7 @@ class __TwigTemplate_c996f743deb44a5b4eb502ca4db100cb829f85a9b9ac09a1b7ce94c4f44
             if (!file_exists($local_file)) {
                 $local_file = $this->getEnvironment()->findTemplate($asset_path);
                 $asset->set_path($local_file, true);
-            $asset->add_assets_version('1');
+            $asset->add_assets_version('3');
             $asset_file = $asset->get_url();
             }
         }

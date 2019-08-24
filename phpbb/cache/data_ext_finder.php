@@ -1,4 +1,4 @@
 <?php exit; ?>
-1594927702
-411
-a:5:{s:32:"a76be804c6035745e8963ed211ca6398";a:0:{}s:32:"af0c8f6bab559396b5ddb9b237f25576";a:0:{}s:32:"689894c98792a831bfa715ff98b12fef";a:1:{i:0;a:4:{s:10:"named_path";s:37:"language/en/acp/permissions_phpbb.php";s:8:"ext_name";s:1:"/";s:4:"path";s:16:"language/en/acp/";s:8:"filename";s:21:"permissions_phpbb.php";}}s:32:"afd7a25343fe05d9cda26ebd06287c1b";a:0:{}s:32:"479068e307381c777832c964dad19696";a:0:{}}
+1595607726
+1004
+a:5:{s:32:"fec8b35d8ad6ba9bd534b4ae7b44ba63";a:2:{i:0;a:4:{s:10:"named_path";s:39:"ext/eparsons/restapi/config/routing.yml";s:8:"ext_name";s:16:"eparsons/restapi";s:4:"path";s:28:"ext/eparsons/restapi/config/";s:8:"filename";s:11:"routing.yml";}i:1;a:4:{s:10:"named_path";s:37:"ext/phpbb/skeleton/config/routing.yml";s:8:"ext_name";s:14:"phpbb/skeleton";s:4:"path";s:26:"ext/phpbb/skeleton/config/";s:8:"filename";s:11:"routing.yml";}}s:32:"e978afa30ded8cee37fc0a2d8f9a743c";a:0:{}s:32:"7a555b371954f1030b243b7f4cefa0dc";a:2:{i:0;a:4:{s:10:"named_path";s:39:"ext/eparsons/restapi/config/routing.yml";s:8:"ext_name";s:16:"eparsons/restapi";s:4:"path";s:28:"ext/eparsons/restapi/config/";s:8:"filename";s:11:"routing.yml";}i:1;a:4:{s:10:"named_path";s:37:"ext/phpbb/skeleton/config/routing.yml";s:8:"ext_name";s:14:"phpbb/skeleton";s:4:"path";s:26:"ext/phpbb/skeleton/config/";s:8:"filename";s:11:"routing.yml";}}s:32:"ef2d92b07cf5a0ebdccbce59cab2f9b0";a:0:{}s:32:"206b89252f7268733ba956cff22517bf";a:0:{}}
