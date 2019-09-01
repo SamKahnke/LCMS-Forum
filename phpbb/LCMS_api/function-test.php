@@ -5,19 +5,19 @@ $phpEx = substr(strrchr(__FILE__, '.'), 1);
 include($phpbb_root_path . 'common.' . $phpEx);
 include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 
-global $db;
 
-	// Here we check permission consistency
 
-	// Sometimes, it can happen permission tables having forums listed which do not exist
-	$sql = 'SELECT *
+	function get_forum_names()
+	{
+		global $db;
+
+		$sql = 'SELECT *
 		FROM ' . FORUMS_TABLE;
-	$result = $db->sql_query($sql);
-
-	echo $sql;
-	echo "<br>";
-	echo $result;
-	while ($row = $db->sql_fetchrow($result)) {
-		echo $row["forum_name"];
+		$result = $db->sql_query($sql);
+		while ($row = $db->sql_fetchrow($result))
+		{
+			echo $row["forum_name"] . "<br>";
+		}
 	}
-// echo get_forum_list();
+
+	get_forum_names();
