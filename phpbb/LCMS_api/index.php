@@ -1,5 +1,4 @@
 <?php
-
 require_once 'router.php';
 
 route('/', function () {
@@ -7,9 +6,8 @@ route('/', function () {
 });
 
 route('/about', function () {
-	echo "Hello from the about route";
+    echo "about page";
 });
 
 $action = $_SERVER['REQUEST_URI'];
-// echo $_SERVER['REQUEST_URI'];
 dispatch($action);
