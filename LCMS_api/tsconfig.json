@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "sourceMap": true,
+        "incremental": true
+    },
+    "exclude": ["node_modules"]
+}
