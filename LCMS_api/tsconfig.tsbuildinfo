@@ -361,9 +361,25 @@
         "version": "67a79af60f6e0f8eac8156364361915047de18fe367d7e0dd78a91add9f11bad",
         "signature": "67a79af60f6e0f8eac8156364361915047de18fe367d7e0dd78a91add9f11bad"
       },
+      "./node_modules/axios/index.d.ts": {
+        "version": "9b3812f5ae5c9c8c9daf7107e1041f4ad9d19aebd12b738a81f22a1ac1f5e371",
+        "signature": "9b3812f5ae5c9c8c9daf7107e1041f4ad9d19aebd12b738a81f22a1ac1f5e371"
+      },
+      "./services/axiosservice.ts": {
+        "version": "2fb055de91b6066648018c41c43550b8266e2139204131cf3bde7f14b518b836",
+        "signature": "2387ab086aa26dbfbbe151f501f1e26333bb28ad35867c033ecf0b27895804c8"
+      },
+      "./test1.ts": {
+        "version": "935b9e7f848003668f26e76beaf91a21153584e8fb7291ffbb216c41324f7dd0",
+        "signature": "408a7dd55c9aad15729e5c449a842227274d816a82d62a2f11cc34adc4b58090"
+      },
       "./server.ts": {
-        "version": "9aec3c30dac2e7f81d566996dfd7ae16dbe6370f73f1f284b3c91cafb74a4519",
+        "version": "07e0f413723fa9b7263971553b68319811f91a6c61d37aad44d724ee2cd09180",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
+      },
+      "./routes/index.ts": {
+        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
       }
     },
     "options": {
@@ -842,9 +858,30 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "./node_modules/axios/index.d.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./services/axiosservice.ts": [
+        "./node_modules/@types/node/https.d.ts",
+        "./node_modules/axios/index.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./test1.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./server.ts": [
         "./node_modules/@types/cors/index.d.ts",
         "./node_modules/@types/express/index.d.ts",
+        "./services/axiosservice.ts",
+        "./node_modules/axios/index.d.ts",
+        "./test1.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./routes/index.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ]
@@ -1314,6 +1351,10 @@
         "./node_modules/@types/express/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./node_modules/axios/index.d.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -1407,6 +1448,10 @@
       "./node_modules/@types/body-parser/index.d.ts",
       "./node_modules/@types/express/index.d.ts",
       "./node_modules/@types/cors/index.d.ts",
+      "./node_modules/axios/index.d.ts",
+      "./services/axiosservice.ts",
+      "./test1.ts",
+      "./routes/index.ts",
       "./server.ts"
     ]
   },
