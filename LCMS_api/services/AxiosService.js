@@ -9,9 +9,9 @@ exports.getPHPBBResponse = async (url, params) => {
         })
     });
     const result = await axiosInstance.get(url, {
-        params: params || {},
-        responseType: "json"
+        params: params || {}
+        // responseType: "json"
     });
-    const response = result;
+    return result;
 };
 //# sourceMappingURL=AxiosService.js.map

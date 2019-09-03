@@ -4,10 +4,10 @@ import { getPHPBBResponse } from "./services/AxiosService";
 import { AxiosResponse } from "axios";
 import { returnTestObject } from "./test1";
 
-const objectTest = async () => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/test1";
-    const response: AxiosResponse<any> = await getPHPBBResponse(url);
-    return response;
+const objectTest = async (request: express.Request, response: express.Response) => {
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/forum_name.php";
+    const result = await getPHPBBResponse(url);
+    response.send(result.data);
 }
 
 (async () => {
@@ -18,7 +18,6 @@ const objectTest = async () => {
         app.use(cors());
 
         app.get(`/objecttest`, objectTest);
-        app.get(`/test1`, returnTestObject);
 
         app.get(`/test`, (req, res) => {
             res.send("Connected to LCMS API");

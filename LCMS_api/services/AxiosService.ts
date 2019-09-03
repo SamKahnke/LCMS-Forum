@@ -9,9 +9,9 @@ export const getPHPBBResponse = async (url: string, params?: any): Promise<any> 
     });
 
     const result: AxiosResponse<any> = await axiosInstance.get<any>(url, {
-        params: params || {},
-        responseType: "json"
+        params: params || {}
+        // responseType: "json"
     });
 
-    const response: any = result;
+    return result;
 }

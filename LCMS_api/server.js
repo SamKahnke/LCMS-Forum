@@ -3,11 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors = require("cors");
 const express = require("express");
 const AxiosService_1 = require("./services/AxiosService");
-const test1_1 = require("./test1");
-const objectTest = async () => {
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/test1";
-    const response = await AxiosService_1.getPHPBBResponse(url);
-    return response;
+const objectTest = async (request, response) => {
+    const url = "http://localhost/rivertown/phpbb/LCMS_api/forum_name.php";
+    const result = await AxiosService_1.getPHPBBResponse(url);
+    response.send(result.data);
 };
 (async () => {
     try {
@@ -15,7 +14,6 @@ const objectTest = async () => {
         const app = express();
         app.use(cors());
         app.get(`/objecttest`, objectTest);
-        app.get(`/test1`, test1_1.returnTestObject);
         app.get(`/test`, (req, res) => {
             res.send("Connected to LCMS API");
         });
