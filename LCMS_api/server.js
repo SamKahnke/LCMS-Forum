@@ -8,11 +8,23 @@ const getGroups = async (request, response) => {
     const result = await AxiosService_1.getPHPBBResponse(url);
     response.send(result.data);
 };
+const getGroupById = async (request, response) => {
+    const url = phpbbAPIRoot + "getGroupById.php";
+    const result = await AxiosService_1.getPHPBBResponse(url);
+    response.send(result.data);
+};
+const getGroupUsers = async (request, response) => {
+    const url = phpbbAPIRoot + "getGroupUsers.php";
+    const result = await AxiosService_1.getPHPBBResponse(url);
+    response.send(result.data);
+};
 (async () => {
     try {
         const port = +(process.env.APP_PORT || 2500);
         const app = express();
         app.get(`/group`, getGroups);
+        app.get(`/groupbyid`, getGroupById);
+        app.get(`/groupusers`, getGroupUsers);
         app.listen(port, () => {
             console.log(`Listening on port ${port}`);
         });
