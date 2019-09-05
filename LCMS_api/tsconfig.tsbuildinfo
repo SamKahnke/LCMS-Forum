@@ -357,10 +357,6 @@
         "version": "0f42a08e16c34cda8b53ba12ee949757136be5bbb1de84d5b16f42c6c23b2482",
         "signature": "0f42a08e16c34cda8b53ba12ee949757136be5bbb1de84d5b16f42c6c23b2482"
       },
-      "./node_modules/@types/cors/index.d.ts": {
-        "version": "75a5ac517fc41fdbce6a98709ea10dd440c28c3b5b773339d7d29565a4204e8f",
-        "signature": "75a5ac517fc41fdbce6a98709ea10dd440c28c3b5b773339d7d29565a4204e8f"
-      },
       "./node_modules/axios/index.d.ts": {
         "version": "2c6db68adaec59aeb3ba2be86b06c29549f8a53d02b838507d1a5875149b9af8",
         "signature": "2c6db68adaec59aeb3ba2be86b06c29549f8a53d02b838507d1a5875149b9af8"
@@ -369,17 +365,17 @@
         "version": "c148d4b2613602b89b589fbd699df1ef77445583507039eded3a18ae1fb209a8",
         "signature": "2387ab086aa26dbfbbe151f501f1e26333bb28ad35867c033ecf0b27895804c8"
       },
+      "./server.ts": {
+        "version": "7351966bcf9d26319a2d282ad433229de4b67e23d3dd3107e232060dffd4aa79",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
+      },
       "./test1.ts": {
         "version": "935b9e7f848003668f26e76beaf91a21153584e8fb7291ffbb216c41324f7dd0",
         "signature": "408a7dd55c9aad15729e5c449a842227274d816a82d62a2f11cc34adc4b58090"
       },
-      "./server.ts": {
-        "version": "aa27388fda9e28494edf86ed037f8104cf78afb6f9c1f57b3cba6a032c371a7d",
-        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
-      },
-      "./routes/index.ts": {
-        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "./node_modules/@types/cors/index.d.ts": {
+        "version": "75a5ac517fc41fdbce6a98709ea10dd440c28c3b5b773339d7d29565a4204e8f",
+        "signature": "75a5ac517fc41fdbce6a98709ea10dd440c28c3b5b773339d7d29565a4204e8f"
       }
     },
     "options": {
@@ -853,11 +849,6 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "./node_modules/@types/cors/index.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "./node_modules/axios/index.d.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
@@ -868,20 +859,18 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "./server.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./services/axiosservice.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./test1.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "./server.ts": [
-        "./node_modules/@types/cors/index.d.ts",
+      "./node_modules/@types/cors/index.d.ts": [
         "./node_modules/@types/express/index.d.ts",
-        "./services/axiosservice.ts",
-        "./node_modules/axios/index.d.ts",
-        "./test1.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "./routes/index.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ]
@@ -1347,12 +1336,12 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "./node_modules/@types/cors/index.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
+      "./node_modules/axios/index.d.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "./node_modules/axios/index.d.ts": [
+      "./node_modules/@types/cors/index.d.ts": [
+        "./node_modules/@types/express/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ]
@@ -1447,11 +1436,10 @@
       "./node_modules/@types/connect/index.d.ts",
       "./node_modules/@types/body-parser/index.d.ts",
       "./node_modules/@types/express/index.d.ts",
-      "./node_modules/@types/cors/index.d.ts",
       "./node_modules/axios/index.d.ts",
       "./services/axiosservice.ts",
       "./test1.ts",
-      "./routes/index.ts",
+      "./node_modules/@types/cors/index.d.ts",
       "./server.ts"
     ]
   },
