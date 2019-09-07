@@ -10,7 +10,11 @@ const getGroups = async (request, response) => {
 };
 const getGroupById = async (request, response) => {
     const url = phpbbAPIRoot + "getGroupById.php";
-    const result = await AxiosService_1.getPHPBBResponse(url);
+    const { id: group_id } = request.params;
+    const params = {
+        group_id
+    };
+    const result = await AxiosService_1.getPHPBBResponse(url, params);
     response.send(result.data);
 };
 const getGroupUsers = async (request, response) => {
@@ -23,7 +27,7 @@ const getGroupUsers = async (request, response) => {
         const port = +(process.env.APP_PORT || 2500);
         const app = express();
         app.get(`/group`, getGroups);
-        app.get(`/groupbyid`, getGroupById);
+        app.get(`/group/:id`, getGroupById);
         app.get(`/groupusers`, getGroupUsers);
         app.listen(port, () => {
             console.log(`Listening on port ${port}`);

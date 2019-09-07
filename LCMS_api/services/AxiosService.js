@@ -9,8 +9,7 @@ exports.getPHPBBResponse = async (url, params) => {
         })
     });
     const result = await axiosInstance.get(url, {
-        params: params || {}
-        // responseType: "json"
+        params
     });
     return result;
 };

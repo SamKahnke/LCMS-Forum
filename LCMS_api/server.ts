@@ -11,7 +11,11 @@ const getGroups = async (request: express.Request, response: express.Response) =
 
 const getGroupById = async (request: express.Request, response: express.Response) => {
     const url: string = phpbbAPIRoot + "getGroupById.php";
-    const result = await getPHPBBResponse(url);
+    const { id: group_id } = request.params;
+    const params: object = {
+        group_id
+    }
+    const result = await getPHPBBResponse(url, params);
     response.send(result.data);
 }
 
@@ -27,7 +31,7 @@ const getGroupUsers = async (request: express.Request, response: express.Respons
         const app: express.Express = express();
 
         app.get(`/group`, getGroups);
-        app.get(`/groupbyid`, getGroupById);
+        app.get(`/group/:id`, getGroupById);
         app.get(`/groupusers`, getGroupUsers);
 
         app.listen(port, () => {
