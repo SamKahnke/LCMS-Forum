@@ -22,6 +22,7 @@ const getGroupUsers = async (request, response) => {
     const result = await AxiosService_1.getPHPBBResponse(url);
     response.send(result.data);
 };
+// const createGroup = 
 (async () => {
     try {
         const port = +(process.env.APP_PORT || 2500);
@@ -29,6 +30,7 @@ const getGroupUsers = async (request, response) => {
         app.get(`/group`, getGroups);
         app.get(`/group/:id`, getGroupById);
         app.get(`/groupusers`, getGroupUsers);
+        // app.post(`/group`, createGroup);
         app.listen(port, () => {
             console.log(`Listening on port ${port}`);
         });

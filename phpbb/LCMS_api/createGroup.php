@@ -4,20 +4,20 @@ $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : '../';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
 include($phpbb_root_path . 'common.' . $phpEx);
 
-function get_group_users()
+$group_name = $request->variable('group_name', '');
+$sql_arr = array(
+	'group_name' => $group_name
+);
+
+function create_group($sql_arr)
 {
     global $db;
-    $groups_arr = array();
-
-	$sql = 'SELECT *
-	FROM ' . USER_GROUP_TABLE . ' WHERE group_id=6';
+	
+	$sql = 'INSERT INTO ' . GROUPS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_arr);
+	echo $sql;
 	$result = $db->sql_query($sql);
-	while ($row = $db->sql_fetchrow($result))
-	{
-		array_push($groups_arr, $row);
-	}
+	
 	http_response_code(200);
-	echo json_encode($groups_arr);
 }
 
-get_group_users();
+create_group($sql_arr);
