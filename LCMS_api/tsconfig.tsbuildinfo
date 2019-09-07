@@ -1438,9 +1438,9 @@
       "./node_modules/@types/express/index.d.ts",
       "./node_modules/axios/index.d.ts",
       "./services/axiosservice.ts",
+      "./server.ts",
       "./test1.ts",
-      "./node_modules/@types/cors/index.d.ts",
-      "./server.ts"
+      "./node_modules/@types/cors/index.d.ts"
     ]
   },
   "version": "3.6.2"
