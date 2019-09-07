@@ -5,7 +5,7 @@ const AxiosService_1 = require("./services/AxiosService");
 const phpbbAPIRoot = "http://localhost/rivertown/phpbb/LCMS_api/";
 const getGroups = async (request, response) => {
     const url = phpbbAPIRoot + "getGroups.php";
-    const result = await AxiosService_1.getPHPBBResponse(url);
+    const result = await AxiosService_1.PHPBB_GET(url);
     response.send(result.data);
 };
 const getGroupById = async (request, response) => {
@@ -14,15 +14,23 @@ const getGroupById = async (request, response) => {
     const params = {
         group_id
     };
-    const result = await AxiosService_1.getPHPBBResponse(url, params);
+    const result = await AxiosService_1.PHPBB_GET(url, params);
     response.send(result.data);
 };
 const getGroupUsers = async (request, response) => {
     const url = phpbbAPIRoot + "getGroupUsers.php";
-    const result = await AxiosService_1.getPHPBBResponse(url);
+    const result = await AxiosService_1.PHPBB_GET(url);
     response.send(result.data);
 };
-// const createGroup = 
+const createGroup = async (request, response) => {
+    const url = phpbbAPIRoot + "createGroup.php";
+    const { group_name } = request.query;
+    const params = {
+        group_name
+    };
+    const result = await AxiosService_1.PHPBB_POST(url, params);
+    response.send(result.data);
+};
 (async () => {
     try {
         const port = +(process.env.APP_PORT || 2500);
@@ -30,7 +38,7 @@ const getGroupUsers = async (request, response) => {
         app.get(`/group`, getGroups);
         app.get(`/group/:id`, getGroupById);
         app.get(`/groupusers`, getGroupUsers);
-        // app.post(`/group`, createGroup);
+        app.post(`/group`, createGroup);
         app.listen(port, () => {
             console.log(`Listening on port ${port}`);
         });

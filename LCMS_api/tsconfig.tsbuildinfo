@@ -362,11 +362,11 @@
         "signature": "2c6db68adaec59aeb3ba2be86b06c29549f8a53d02b838507d1a5875149b9af8"
       },
       "./services/axiosservice.ts": {
-        "version": "937da2620676c574926ccfe63c6b3c2032686ef0d7d25cf1a89627acd5d4d938",
-        "signature": "29eb8aee043fe46f84f264ccf786d85aca61dbdce73c77fb1e347be5a59899bc"
+        "version": "37737ff643113e59dc08351de0f452a5bc670fa133e76af3612b0408d2491eca",
+        "signature": "175dfca73ba68138bf6e6deb43acf94ddc48dbed0027a259ee452986e67c27fe"
       },
       "./server.ts": {
-        "version": "54507cd79106038fabcbb6ca1b87646ba83d23ab8b33a28542a277cc370fb54d",
+        "version": "ee5f4ac0cb96c163766fe5181539b705cae644f8d71242a0728d935f4493ec8d",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "./test1.ts": {
@@ -1437,10 +1437,10 @@
       "./node_modules/@types/body-parser/index.d.ts",
       "./node_modules/@types/express/index.d.ts",
       "./node_modules/axios/index.d.ts",
-      "./services/axiosservice.ts",
+      "./server.ts",
       "./test1.ts",
       "./node_modules/@types/cors/index.d.ts",
-      "./server.ts"
+      "./services/axiosservice.ts"
     ]
   },
   "version": "3.6.2"

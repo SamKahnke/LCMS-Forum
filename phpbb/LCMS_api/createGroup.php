@@ -14,9 +14,10 @@ function create_group($sql_arr)
     global $db;
 	
 	$sql = 'INSERT INTO ' . GROUPS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_arr);
-	echo $sql;
+	echo $sql_arr;
+	echo $group_name;
 	$result = $db->sql_query($sql);
-	
+
 	http_response_code(200);
 }
 
