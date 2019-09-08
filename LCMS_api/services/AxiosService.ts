@@ -26,7 +26,7 @@ export const PHPBB_POST = async (url: string, params?: object): Promise<any> => 
         method: 'post',
         url,
         params
-    })
-    // .post<any>(url, params);
+    });
+
     return result;
 }

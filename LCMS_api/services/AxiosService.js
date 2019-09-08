@@ -24,7 +24,6 @@ exports.PHPBB_POST = async (url, params) => {
         url,
         params
     });
-    // .post<any>(url, params);
     return result;
 };
 //# sourceMappingURL=AxiosService.js.map

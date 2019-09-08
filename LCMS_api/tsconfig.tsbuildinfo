@@ -362,7 +362,7 @@
         "signature": "2c6db68adaec59aeb3ba2be86b06c29549f8a53d02b838507d1a5875149b9af8"
       },
       "./services/axiosservice.ts": {
-        "version": "37737ff643113e59dc08351de0f452a5bc670fa133e76af3612b0408d2491eca",
+        "version": "3d62b0d9f8745d45e7584581abae6af1452a2928a4bdf82f86b59beb258fbbca",
         "signature": "175dfca73ba68138bf6e6deb43acf94ddc48dbed0027a259ee452986e67c27fe"
       },
       "./server.ts": {
@@ -373,9 +373,21 @@
         "version": "935b9e7f848003668f26e76beaf91a21153584e8fb7291ffbb216c41324f7dd0",
         "signature": "408a7dd55c9aad15729e5c449a842227274d816a82d62a2f11cc34adc4b58090"
       },
+      "./middleware/joivalidation.ts": {
+        "version": "2f81556d24c8ec13fe631a8d62d7074f4b987fac650b82585d323dd9e08f3080",
+        "signature": "648831abbcb676ef7f3d29cc3824e44e88a7e9c64c4e6b562e3b7b130b062991"
+      },
       "./node_modules/@types/cors/index.d.ts": {
         "version": "75a5ac517fc41fdbce6a98709ea10dd440c28c3b5b773339d7d29565a4204e8f",
         "signature": "75a5ac517fc41fdbce6a98709ea10dd440c28c3b5b773339d7d29565a4204e8f"
+      },
+      "./node_modules/@types/hapi__joi/index.d.ts": {
+        "version": "a3950c915b66babbea991f82c648728181724cca11654610c412be72311c4f40",
+        "signature": "a3950c915b66babbea991f82c648728181724cca11654610c412be72311c4f40"
+      },
+      "./node_modules/@types/swagger-ui-express/index.d.ts": {
+        "version": "2105e938d796237ebe848b4b79b19feedab956074529fd074db4fcee7b15a0fb",
+        "signature": "2105e938d796237ebe848b4b79b19feedab956074529fd074db4fcee7b15a0fb"
       }
     },
     "options": {
@@ -869,8 +881,24 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "./middleware/joivalidation.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./node_modules/@types/cors/index.d.ts": [
         "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./node_modules/@types/hapi__joi/index.d.ts": [
+        "./node_modules/@types/hapi__joi/index.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./node_modules/@types/swagger-ui-express/index.d.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/serve-static/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ]
@@ -1340,8 +1368,22 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "./middleware/joivalidation.ts": [
+        "./node_modules/@types/express/index.d.ts"
+      ],
       "./node_modules/@types/cors/index.d.ts": [
         "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./node_modules/@types/hapi__joi/index.d.ts": [
+        "./node_modules/@types/hapi__joi/index.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./node_modules/@types/swagger-ui-express/index.d.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/serve-static/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ]
@@ -1437,10 +1479,13 @@
       "./node_modules/@types/body-parser/index.d.ts",
       "./node_modules/@types/express/index.d.ts",
       "./node_modules/axios/index.d.ts",
+      "./services/axiosservice.ts",
       "./server.ts",
       "./test1.ts",
       "./node_modules/@types/cors/index.d.ts",
-      "./services/axiosservice.ts"
+      "./node_modules/@types/hapi__joi/index.d.ts",
+      "./node_modules/@types/swagger-ui-express/index.d.ts",
+      "./middleware/joivalidation.ts"
     ]
   },
   "version": "3.6.2"
