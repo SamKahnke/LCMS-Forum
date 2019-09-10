@@ -1,5 +1,7 @@
 import * as express from "express";
 import { PHPBB_GET, PHPBB_POST } from "./services/AxiosService";
+import GetGroupByIdConfig from "./handlers/getGroupById";
+import JoiValidation from "./middleware/JoiValidation";
 
 const phpbbAPIRoot: string = "http://localhost/rivertown/phpbb/LCMS_api/"
 
@@ -9,15 +11,7 @@ const getGroups = async (request: express.Request, response: express.Response) =
     response.send(result.data);
 }
 
-const getGroupById = async (request: express.Request, response: express.Response) => {
-    const url: string = phpbbAPIRoot + "getGroupById.php";
-    const { id: group_id } = request.params;
-    const params: object = {
-        group_id
-    }
-    const result = await PHPBB_GET(url, params);
-    response.send(result.data);
-}
+
 
 const getGroupUsers = async (request: express.Request, response: express.Response) => {
     const url: string = phpbbAPIRoot + "getGroupUsers.php";
@@ -41,7 +35,7 @@ const createGroup = async (request: express.Request, response: express.Response)
         const app: express.Express = express();
 
         app.get(`/group`, getGroups);
-        app.get(`/group/:id`, getGroupById);
+        app.get(GetGroupByIdConfig.route, JoiValidation(GetGroupByIdConfig.schema), GetGroupByIdConfig.handler);
         app.get(`/groupusers`, getGroupUsers);
 
         app.post(`/group`, createGroup);

@@ -2,19 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const AxiosService_1 = require("./services/AxiosService");
+const getGroupById_1 = require("./handlers/getGroupById");
+const JoiValidation_1 = require("./middleware/JoiValidation");
 const phpbbAPIRoot = "http://localhost/rivertown/phpbb/LCMS_api/";
 const getGroups = async (request, response) => {
     const url = phpbbAPIRoot + "getGroups.php";
     const result = await AxiosService_1.PHPBB_GET(url);
-    response.send(result.data);
-};
-const getGroupById = async (request, response) => {
-    const url = phpbbAPIRoot + "getGroupById.php";
-    const { id: group_id } = request.params;
-    const params = {
-        group_id
-    };
-    const result = await AxiosService_1.PHPBB_GET(url, params);
     response.send(result.data);
 };
 const getGroupUsers = async (request, response) => {
@@ -36,7 +29,7 @@ const createGroup = async (request, response) => {
         const port = +(process.env.APP_PORT || 2500);
         const app = express();
         app.get(`/group`, getGroups);
-        app.get(`/group/:id`, getGroupById);
+        app.get(getGroupById_1.default.route, JoiValidation_1.default(getGroupById_1.default.schema), getGroupById_1.default.handler);
         app.get(`/groupusers`, getGroupUsers);
         app.post(`/group`, createGroup);
         app.listen(port, () => {
