@@ -1,26 +1,17 @@
 import * as express from "express";
-import { PHPBB_GET, PHPBB_POST } from "./services/AxiosService";
-import GetGroupByIdConfig from "./handlers/getGroupById";
 import JoiValidation from "./middleware/JoiValidation";
-
-const phpbbAPIRoot: string = "http://localhost/rivertown/phpbb/LCMS_api/"
-
-const getGroups = async (request: express.Request, response: express.Response) => {
-    const url: string = phpbbAPIRoot + "getGroups.php";
-    const result = await PHPBB_GET(url);
-    response.send(result.data);
-}
-
-
+import { PHPBB_GET, PHPBB_POST } from "./services/AxiosService";
+import GetGroupsConfig from "./handlers/getGroups";
+import GetGroupByIdConfig from "./handlers/getGroupById";
 
 const getGroupUsers = async (request: express.Request, response: express.Response) => {
-    const url: string = phpbbAPIRoot + "getGroupUsers.php";
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getGroupUsers.php";
     const result = await PHPBB_GET(url);
     response.send(result.data);
 }
 
 const createGroup = async (request: express.Request, response: express.Response) => {
-    const url: string = phpbbAPIRoot + "createGroup.php";
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createGroup.php";
     const { group_name } = request.query;
     const params: object = {
         group_name
@@ -34,7 +25,7 @@ const createGroup = async (request: express.Request, response: express.Response)
         const port: number = +(process.env.APP_PORT || 2500);
         const app: express.Express = express();
 
-        app.get(`/group`, getGroups);
+        app.get(GetGroupsConfig.route, GetGroupsConfig.handler);
         app.get(GetGroupByIdConfig.route, JoiValidation(GetGroupByIdConfig.schema), GetGroupByIdConfig.handler);
         app.get(`/groupusers`, getGroupUsers);
 
