@@ -2,7 +2,10 @@ import * as express from "express";
 import JoiValidation from "./middleware/JoiValidation";
 import { PHPBB_GET, PHPBB_POST } from "./services/AxiosService";
 import GetGroupsConfig from "./handlers/getGroups";
+import GetUsersConfig from "./handlers/getUsers";
 import GetGroupByIdConfig from "./handlers/getGroupById";
+import GetUserByIdConfig from "./handlers/getUserById";
+import CreateGroupConfig from "./handlers/createGroup";
 
 const getGroupUsers = async (request: express.Request, response: express.Response) => {
     const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getGroupUsers.php";
@@ -10,15 +13,15 @@ const getGroupUsers = async (request: express.Request, response: express.Respons
     response.send(result.data);
 }
 
-const createGroup = async (request: express.Request, response: express.Response) => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createGroup.php";
-    const { group_name } = request.query;
-    const params: object = {
-        group_name
-    }
-    const result = await PHPBB_POST(url, params);
-    response.send(result.data);
-}
+// const createGroup = async (request: express.Request, response: express.Response) => {
+//     const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createGroup.php";
+//     const { group_name } = request.query;
+//     const params: object = {
+//         group_name
+//     }
+//     const result = await PHPBB_POST(url, params);
+//     response.send(result.data);
+// }
 
 (async () => {
     try {
@@ -26,10 +29,12 @@ const createGroup = async (request: express.Request, response: express.Response)
         const app: express.Express = express();
 
         app.get(GetGroupsConfig.route, GetGroupsConfig.handler);
+        app.get(GetUsersConfig.route, GetUsersConfig.handler);
         app.get(GetGroupByIdConfig.route, JoiValidation(GetGroupByIdConfig.schema), GetGroupByIdConfig.handler);
+        app.get(GetUserByIdConfig.route, JoiValidation(GetUserByIdConfig.schema), GetUserByIdConfig.handler);
         app.get(`/groupusers`, getGroupUsers);
 
-        app.post(`/group`, createGroup);
+        app.post(CreateGroupConfig.route, CreateGroupConfig.handler);
 
         app.listen(port, () => {
             console.log(`Listening on port ${port}`);
