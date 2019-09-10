@@ -390,7 +390,7 @@
         "signature": "e8e6c7a59e7ceb972ac380f3f6282959f23d64dfa96a8e9b9c75a593ac0776f8"
       },
       "./handlers/creategroup.ts": {
-        "version": "a8088fc36ec61c88ecf3f52ce2c344befb745f27d276235a1cb5ecbb241d9dc6",
+        "version": "5928dd2918b3bfd8bc79bbf6600bb3abb8cfe0dda85874625624061249f11e0f",
         "signature": "4ada9cac8c328ec977ab80ea419d79d5d1b759dce39a565bc633437165dbc248"
       },
       "./server.ts": {

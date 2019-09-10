@@ -9,16 +9,14 @@ const summary: string = "Create group";
 const tag: string = "Group";
 const schema: ObjectSchema = joi
     .object()
-    // .keys({
-    //     params: joi.object().keys({
-    //         id: joi
-    //             .number()
-    //             .integer()
-    //             .positive()
-    //             .description("The PHPBB Group Id")
-    //             .required()
-    //     })
-    // })
+    .keys({
+        params: joi.object().keys({
+            name: joi
+                .string()
+                .description("Create a new group")
+                .required()
+        })
+    })
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {

@@ -7,16 +7,14 @@ const summary = "Create group";
 const tag = "Group";
 const schema = joi
     .object()
-    // .keys({
-    //     params: joi.object().keys({
-    //         id: joi
-    //             .number()
-    //             .integer()
-    //             .positive()
-    //             .description("The PHPBB Group Id")
-    //             .required()
-    //     })
-    // })
+    .keys({
+    params: joi.object().keys({
+        name: joi
+            .string()
+            .description("Create a new group")
+            .required()
+    })
+})
     .options({ allowUnknown: true });
 const handler = async (request, response) => {
     const url = "http://localhost/rivertown/phpbb/LCMS_api/createGroup.php";
