@@ -4,9 +4,9 @@ import { ObjectSchema } from "joi";
 import { PHPBB_GET } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
 
-const route: string = `/group/:id`;
-const summary: string = "Get group by group id";
-const tag: string = "Group";
+const route: string = `/forum/:id`;
+const summary: string = "Get forum by forum id";
+const tag: string = "Forum";
 const schema: ObjectSchema = joi
     .object()
     .keys({
@@ -15,17 +15,17 @@ const schema: ObjectSchema = joi
                 .number()
                 .integer()
                 .positive()
-                .description("The PHPBB Group Id")
+                .description("The PHPBB Forum Id")
                 .required()
         })
     })
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getGroupById.php";
-    const { id: group_id } = request.params;
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getForumById.php";
+    const { id: forum_id } = request.params;
     const params: object = {
-        group_id
+        forum_id
     }
 
     try {
@@ -39,7 +39,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
     }  
 }
 
-const GetGroupByIdConfig: RouteConfigObject = {
+const GetForumByIdConfig: RouteConfigObject = {
     route,
     summary,
     tag,
@@ -47,4 +47,4 @@ const GetGroupByIdConfig: RouteConfigObject = {
     handler
 }
 
-export default GetGroupByIdConfig;
+export default GetForumByIdConfig;

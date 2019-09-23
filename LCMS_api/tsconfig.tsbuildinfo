@@ -390,7 +390,7 @@
         "signature": "d7b78c17aea9b8155d5e04bbcbd986a82af28f368badaa51b81a7d0bacfcdece"
       },
       "./handlers/group/getgroupbyid.ts": {
-        "version": "2257cf8988881d71392abfa2321ba31c052b591a26f1428b7772841c37012ee2",
+        "version": "a68c7c49cf09d28e2c7249ad0dfd115d9adfc333b0fd2cdf853d01f8ea14d5d6",
         "signature": "ebc0b2374cbe7a961700e623b1adc5679e2a97218bf865c484c8a67a9eb0691a"
       },
       "./handlers/group/creategroup.ts": {
@@ -401,16 +401,24 @@
         "version": "d860c653bb3c8194f31d0a0066f8b1c534c3fc4e4836ddeba9550cf7270847b5",
         "signature": "df50e67df1b99f9c0968309620b65d1ffa6263cc119e25d324d570e85b47c918"
       },
+      "./handlers/forum/getforumbyid.ts": {
+        "version": "f1770c067c75a755836d221c7c33d26f2a6bf0e6971230522e2132e72b6ebc84",
+        "signature": "83e3a74421046d70becfb07be2a8816a02966eaa8596bed8eb1bffcb4d9d5ebb"
+      },
       "./handlers/topic/gettopics.ts": {
         "version": "2a6e4cd52a13667fe54f7c34b01a485d9e980d48d6185f4f0efcd820ff05437e",
         "signature": "4e08596fd6a9316f740ca53a867b852fc7b05e01ec317dd5d23a02a92922cf9c"
+      },
+      "./handlers/topic/gettopicbyid.ts": {
+        "version": "aef0309c39c62406117a30b3169274c61a46ade17cdb387edf074484e80742e6",
+        "signature": "a2b6c226c949c8e67bb956b3c1a0fc08832fd2ba56ca1b57bd92521c084c9475"
       },
       "./handlers/post/getposts.ts": {
         "version": "263f536e14c016bed854cf2ac8bf9033f2aff698a4d9a956349d25d95a14873a",
         "signature": "92754972ebf936eeb41e53e10628a10712b5213930d5fb68e130efdb624c812f"
       },
       "./server.ts": {
-        "version": "c193ccb38db791298f8e91568712b982d3b617b135dad997dbe0ba5c56f76afd",
+        "version": "4b34a90a361ff46d6cc6dc2f2cb2586214542f91b0dfd729b5872b888faeeed4",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "./test1.ts": {
@@ -970,7 +978,21 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "./handlers/forum/getforumbyid.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./services/axiosservice.ts",
+        "./types.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./handlers/topic/gettopics.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./services/axiosservice.ts",
+        "./types.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./handlers/topic/gettopicbyid.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
@@ -995,7 +1017,9 @@
         "./handlers/group/getgroupbyid.ts",
         "./handlers/group/creategroup.ts",
         "./handlers/forum/getforums.ts",
+        "./handlers/forum/getforumbyid.ts",
         "./handlers/topic/gettopics.ts",
+        "./handlers/topic/gettopicbyid.ts",
         "./handlers/post/getposts.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
@@ -1513,7 +1537,13 @@
       "./handlers/forum/getforums.ts": [
         "./types.ts"
       ],
+      "./handlers/forum/getforumbyid.ts": [
+        "./types.ts"
+      ],
       "./handlers/topic/gettopics.ts": [
+        "./types.ts"
+      ],
+      "./handlers/topic/gettopicbyid.ts": [
         "./types.ts"
       ],
       "./handlers/post/getposts.ts": [
@@ -1637,13 +1667,15 @@
       "./handlers/group/getgroupbyid.ts",
       "./handlers/group/creategroup.ts",
       "./handlers/forum/getforums.ts",
+      "./handlers/forum/getforumbyid.ts",
       "./handlers/topic/gettopics.ts",
       "./handlers/post/getposts.ts",
+      "./server.ts",
       "./test1.ts",
       "./node_modules/@types/cors/index.d.ts",
       "./node_modules/@types/hapi__joi/index.d.ts",
       "./node_modules/@types/swagger-ui-express/index.d.ts",
-      "./server.ts"
+      "./handlers/topic/gettopicbyid.ts"
     ]
   },
   "version": "3.6.2"

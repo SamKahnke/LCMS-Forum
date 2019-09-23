@@ -8,7 +8,9 @@ import GetGroupsConfig from "./handlers/group/getGroups";
 import GetGroupByIdConfig from "./handlers/group/getGroupById";
 import CreateGroupConfig from "./handlers/group/createGroup";
 import GetForumsConfig from "./handlers/forum/getForums";
+import GetForumByIdConfig from "./handlers/forum/getForumById";
 import GetTopicsConfig from "./handlers/topic/getTopics";
+import GetTopicByIdConfig from "./handlers/topic/getTopicById";
 import GetPostsConfig from "./handlers/post/getPosts";
 
 const getGroupUsers = async (request: express.Request, response: express.Response) => {
@@ -30,7 +32,10 @@ const getGroupUsers = async (request: express.Request, response: express.Respons
         app.get(`/groupusers`, getGroupUsers);
 
         app.get(GetForumsConfig.route, GetForumsConfig.handler);
+        app.get(GetForumByIdConfig.route, JoiValidation(GetForumByIdConfig.schema), GetForumByIdConfig.handler);
+
         app.get(GetTopicsConfig.route, GetTopicsConfig.handler);
+        app.get(GetTopicByIdConfig.route, JoiValidation(GetTopicByIdConfig.schema), GetTopicByIdConfig.handler);
 
         app.get(GetPostsConfig.route, GetPostsConfig.handler);
 
