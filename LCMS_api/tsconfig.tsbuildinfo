@@ -405,6 +405,10 @@
         "version": "f1770c067c75a755836d221c7c33d26f2a6bf0e6971230522e2132e72b6ebc84",
         "signature": "83e3a74421046d70becfb07be2a8816a02966eaa8596bed8eb1bffcb4d9d5ebb"
       },
+      "./handlers/forum/getforumusers.ts": {
+        "version": "9ad7c66a9956ce1742cf37638bce8dffa9310e533c71be8a4837425336ce3ad4",
+        "signature": "f5e21eec6fd59bcbcc3d8d28f4ce6e253d89ce41a71293196eaf6604774aa7bc"
+      },
       "./handlers/topic/gettopics.ts": {
         "version": "2a6e4cd52a13667fe54f7c34b01a485d9e980d48d6185f4f0efcd820ff05437e",
         "signature": "4e08596fd6a9316f740ca53a867b852fc7b05e01ec317dd5d23a02a92922cf9c"
@@ -418,7 +422,7 @@
         "signature": "92754972ebf936eeb41e53e10628a10712b5213930d5fb68e130efdb624c812f"
       },
       "./server.ts": {
-        "version": "4b34a90a361ff46d6cc6dc2f2cb2586214542f91b0dfd729b5872b888faeeed4",
+        "version": "40ccd2fbffc24a3887a84303955464bbacee3f4c8690545d3db5f395caabbd81",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "./test1.ts": {
@@ -985,6 +989,13 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "./handlers/forum/getforumusers.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./services/axiosservice.ts",
+        "./types.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./handlers/topic/gettopics.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
@@ -1009,7 +1020,6 @@
       "./server.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./middleware/joivalidation.ts",
-        "./services/axiosservice.ts",
         "./handlers/user/getusers.ts",
         "./handlers/user/getuserbyid.ts",
         "./handlers/user/createuser.ts",
@@ -1018,6 +1028,7 @@
         "./handlers/group/creategroup.ts",
         "./handlers/forum/getforums.ts",
         "./handlers/forum/getforumbyid.ts",
+        "./handlers/forum/getforumusers.ts",
         "./handlers/topic/gettopics.ts",
         "./handlers/topic/gettopicbyid.ts",
         "./handlers/post/getposts.ts",
@@ -1540,6 +1551,9 @@
       "./handlers/forum/getforumbyid.ts": [
         "./types.ts"
       ],
+      "./handlers/forum/getforumusers.ts": [
+        "./types.ts"
+      ],
       "./handlers/topic/gettopics.ts": [
         "./types.ts"
       ],
@@ -1669,13 +1683,14 @@
       "./handlers/forum/getforums.ts",
       "./handlers/forum/getforumbyid.ts",
       "./handlers/topic/gettopics.ts",
+      "./handlers/topic/gettopicbyid.ts",
       "./handlers/post/getposts.ts",
       "./server.ts",
       "./test1.ts",
       "./node_modules/@types/cors/index.d.ts",
       "./node_modules/@types/hapi__joi/index.d.ts",
       "./node_modules/@types/swagger-ui-express/index.d.ts",
-      "./handlers/topic/gettopicbyid.ts"
+      "./handlers/forum/getforumusers.ts"
     ]
   },
   "version": "3.6.2"

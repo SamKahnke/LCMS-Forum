@@ -1,6 +1,5 @@
 import * as express from "express";
 import JoiValidation from "./middleware/JoiValidation";
-import { PHPBB_GET, PHPBB_POST } from "./services/AxiosService";
 import GetUsersConfig from "./handlers/user/getUsers";
 import GetUserByIdConfig from "./handlers/user/getUserById";
 import CreateUserConfig from "./handlers/user/createUser";
@@ -9,15 +8,10 @@ import GetGroupByIdConfig from "./handlers/group/getGroupById";
 import CreateGroupConfig from "./handlers/group/createGroup";
 import GetForumsConfig from "./handlers/forum/getForums";
 import GetForumByIdConfig from "./handlers/forum/getForumById";
+import GetForumUsersConfig from "./handlers/forum/getForumUsers";
 import GetTopicsConfig from "./handlers/topic/getTopics";
 import GetTopicByIdConfig from "./handlers/topic/getTopicById";
 import GetPostsConfig from "./handlers/post/getPosts";
-
-const getGroupUsers = async (request: express.Request, response: express.Response) => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getGroupUsers.php";
-    const result = await PHPBB_GET(url);
-    response.send(result.data);
-}
 
 (async () => {
     try {
@@ -29,10 +23,10 @@ const getGroupUsers = async (request: express.Request, response: express.Respons
         
         app.get(GetGroupsConfig.route, GetGroupsConfig.handler);
         app.get(GetGroupByIdConfig.route, JoiValidation(GetGroupByIdConfig.schema), GetGroupByIdConfig.handler);
-        app.get(`/groupusers`, getGroupUsers);
 
         app.get(GetForumsConfig.route, GetForumsConfig.handler);
         app.get(GetForumByIdConfig.route, JoiValidation(GetForumByIdConfig.schema), GetForumByIdConfig.handler);
+        app.get(GetForumUsersConfig.route, JoiValidation(GetForumUsersConfig.schema), GetForumUsersConfig.handler);
 
         app.get(GetTopicsConfig.route, GetTopicsConfig.handler);
         app.get(GetTopicByIdConfig.route, JoiValidation(GetTopicByIdConfig.schema), GetTopicByIdConfig.handler);
