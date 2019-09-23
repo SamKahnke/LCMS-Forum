@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
-const route = `/forum/:id/user`;
-const summary = "Get users and forum auth info by forum id";
+const route = `/forum/:id/group`;
+const summary = "Get groups and forum auth info by forum id";
 const tag = "Forum";
 const schema = joi
     .object()
@@ -19,7 +19,7 @@ const schema = joi
 })
     .options({ allowUnknown: true });
 const handler = async (request, response) => {
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/getForumUsers.php";
+    const url = "http://localhost/rivertown/phpbb/LCMS_api/getForumGroups.php";
     const { id: forum_id } = request.params;
     const params = {
         forum_id
@@ -35,12 +35,12 @@ const handler = async (request, response) => {
         });
     }
 };
-const GetForumUsersConfig = {
+const GetForumGroupsConfig = {
     route,
     summary,
     tag,
     schema,
     handler
 };
-exports.default = GetForumUsersConfig;
-//# sourceMappingURL=getForumUsers.js.map
+exports.default = GetForumGroupsConfig;
+//# sourceMappingURL=getForumGroups.js.map

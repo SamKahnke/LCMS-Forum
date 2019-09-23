@@ -4,8 +4,8 @@ import { ObjectSchema } from "joi";
 import { PHPBB_GET } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
 
-const route: string = `/forum/:id/user`;
-const summary: string = "Get users and forum auth info by forum id";
+const route: string = `/forum/:id/group`;
+const summary: string = "Get groups and forum auth info by forum id";
 const tag: string = "Forum";
 const schema: ObjectSchema = joi
     .object()
@@ -22,7 +22,7 @@ const schema: ObjectSchema = joi
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getForumUsers.php";
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getForumGroups.php";
     const { id: forum_id } = request.params;
     const params: object = {
         forum_id
@@ -39,7 +39,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
     }  
 }
 
-const GetForumUsersConfig: RouteConfigObject = {
+const GetForumGroupsConfig: RouteConfigObject = {
     route,
     summary,
     tag,
@@ -47,4 +47,4 @@ const GetForumUsersConfig: RouteConfigObject = {
     handler
 }
 
-export default GetForumUsersConfig;
+export default GetForumGroupsConfig;
