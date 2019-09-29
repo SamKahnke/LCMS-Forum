@@ -10,6 +10,8 @@ import GetForumsConfig from "./handlers/forum/getForums";
 import GetForumByIdConfig from "./handlers/forum/getForumById";
 import GetForumUsersConfig from "./handlers/forum/getForumUsers";
 import GetForumGroupsConfig from "./handlers/forum/getForumGroups";
+import AddUserToForumConfig from "./handlers/forum/addUserToForum";
+import AddGroupToForumConfig from "./handlers/forum/addGroupToForum";
 import GetTopicsConfig from "./handlers/topic/getTopics";
 import GetTopicByIdConfig from "./handlers/topic/getTopicById";
 import GetPostsConfig from "./handlers/post/getPosts";
@@ -29,6 +31,7 @@ import GetPostsConfig from "./handlers/post/getPosts";
         app.get(GetForumByIdConfig.route, JoiValidation(GetForumByIdConfig.schema), GetForumByIdConfig.handler);
         app.get(GetForumUsersConfig.route, JoiValidation(GetForumUsersConfig.schema), GetForumUsersConfig.handler);
         app.get(GetForumGroupsConfig.route, JoiValidation(GetForumGroupsConfig.schema), GetForumGroupsConfig.handler);
+        
 
         app.get(GetTopicsConfig.route, GetTopicsConfig.handler);
         app.get(GetTopicByIdConfig.route, JoiValidation(GetTopicByIdConfig.schema), GetTopicByIdConfig.handler);
@@ -37,6 +40,8 @@ import GetPostsConfig from "./handlers/post/getPosts";
 
         app.post(CreateUserConfig.route, CreateUserConfig.handler);
         app.post(CreateGroupConfig.route, CreateGroupConfig.handler);
+        app.get(AddUserToForumConfig.route, JoiValidation(AddUserToForumConfig.schema), AddUserToForumConfig.handler);
+        app.get(AddGroupToForumConfig.route, JoiValidation(AddGroupToForumConfig.schema), AddGroupToForumConfig.handler);
 
 
         app.listen(port, () => {

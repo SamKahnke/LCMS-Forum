@@ -12,6 +12,8 @@ const getForums_1 = require("./handlers/forum/getForums");
 const getForumById_1 = require("./handlers/forum/getForumById");
 const getForumUsers_1 = require("./handlers/forum/getForumUsers");
 const getForumGroups_1 = require("./handlers/forum/getForumGroups");
+const addUserToForum_1 = require("./handlers/forum/addUserToForum");
+const addGroupToForum_1 = require("./handlers/forum/addGroupToForum");
 const getTopics_1 = require("./handlers/topic/getTopics");
 const getTopicById_1 = require("./handlers/topic/getTopicById");
 const getPosts_1 = require("./handlers/post/getPosts");
@@ -32,6 +34,8 @@ const getPosts_1 = require("./handlers/post/getPosts");
         app.get(getPosts_1.default.route, getPosts_1.default.handler);
         app.post(createUser_1.default.route, createUser_1.default.handler);
         app.post(createGroup_1.default.route, createGroup_1.default.handler);
+        app.get(addUserToForum_1.default.route, JoiValidation_1.default(addUserToForum_1.default.schema), addUserToForum_1.default.handler);
+        app.get(addGroupToForum_1.default.route, JoiValidation_1.default(addGroupToForum_1.default.schema), addGroupToForum_1.default.handler);
         app.listen(port, () => {
             console.log(`Listening on port ${port}`);
         });
