@@ -4,31 +4,31 @@ import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
 
-const route: string = `/group`;
-const summary: string = "Create group";
-const tag: string = "Group";
+const route: string = `/forum/delete`;
+const summary: string = "Delete forum by forum id";
+const tag: string = "Forum";
 const schema: ObjectSchema = joi
     .object()
     .keys({
         query: joi.object().keys({
-            group_name: joi
-                .string()
-                .description("The name of the new group")
-                .required(),
-            group_desc: joi
-                .string()
-                .description("A description of the group")
+            forum_id: joi
+                .number()
+                .integer()
+                .positive()
+                .description("The PHPBB Forum Id")
+                .required()
         })
     })
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    
-    const { group_name, group_desc } = request.query;
+    const { forum_id } = request.query;
+    const params: object = {
+        forum_id,
+    }
 
     const queryParams: object = {
-        group_name,
-        group_desc
+        forum_id
     }
 
     var esc = encodeURIComponent;
@@ -36,10 +36,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createGroup.php?" + queryString;
-
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/deleteForum.php?" + queryString;
     try {
-        const result = await PHPBB_POST(url);
+        const result = await PHPBB_POST(url, params);
         response.send(result.data);
     } catch (err) {
         console.error(err.message);
@@ -49,7 +48,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
     }  
 }
 
-const CreateGroupConfig: RouteConfigObject = {
+const DeleteForumConfig: RouteConfigObject = {
     route,
     summary,
     tag,
@@ -57,4 +56,4 @@ const CreateGroupConfig: RouteConfigObject = {
     handler
 }
 
-export default CreateGroupConfig;
+export default DeleteForumConfig;

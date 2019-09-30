@@ -21,7 +21,6 @@ function add_user_to_forum($forum_id, $group_id, $auth_option_id, $auth_role_id,
     $result = $db->sql_query($sql);
 
 	http_response_code(200);
-	
 }
 
 add_user_to_forum($forum_id, $group_id, $auth_option_id, $auth_role_id, $auth_setting);

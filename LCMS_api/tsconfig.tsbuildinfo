@@ -370,7 +370,7 @@
         "signature": "2c6db68adaec59aeb3ba2be86b06c29549f8a53d02b838507d1a5875149b9af8"
       },
       "./services/axiosservice.ts": {
-        "version": "3d62b0d9f8745d45e7584581abae6af1452a2928a4bdf82f86b59beb258fbbca",
+        "version": "abce76c852ff931605ab899be88adbe923871c4d186e61e610f631c7501f9ff0",
         "signature": "175dfca73ba68138bf6e6deb43acf94ddc48dbed0027a259ee452986e67c27fe"
       },
       "./handlers/user/getusers.ts": {
@@ -381,10 +381,6 @@
         "version": "9cc4082bc020beb651b73bbb4b2e98f3790e132b8325d8831787336a44e8f93e",
         "signature": "ccb052fd59fa759f40e33ed3610f76d476146730dc11d78d570caa5d46fd50a2"
       },
-      "./handlers/user/createuser.ts": {
-        "version": "89eac200d2be4ae412028943e07d80ce4c4dc9e1e005be94a9e3f43ea111a8a1",
-        "signature": "04807a97139aa5722a126fb01126c186d6396cc02e1d7f586d3a3382d982975b"
-      },
       "./handlers/group/getgroups.ts": {
         "version": "681c6a13cacab3b49f041129f746851a3237724567689f2a2805c7c90c8ab28b",
         "signature": "d7b78c17aea9b8155d5e04bbcbd986a82af28f368badaa51b81a7d0bacfcdece"
@@ -394,7 +390,7 @@
         "signature": "ebc0b2374cbe7a961700e623b1adc5679e2a97218bf865c484c8a67a9eb0691a"
       },
       "./handlers/group/creategroup.ts": {
-        "version": "9fa44e7f034615a1c0a3086e74130deefc692a142c33192caba3f742f0458bb7",
+        "version": "0515b6bb6dd144ac02db50b23941877c39f0d1dcb2b65c06d78da5829a4a39c0",
         "signature": "2b36fb7d345945e83d793b5f95fd0a16b40a77b4fbff0d9deeb348bb52a4cdf1"
       },
       "./handlers/forum/getforums.ts": {
@@ -405,6 +401,10 @@
         "version": "f1770c067c75a755836d221c7c33d26f2a6bf0e6971230522e2132e72b6ebc84",
         "signature": "83e3a74421046d70becfb07be2a8816a02966eaa8596bed8eb1bffcb4d9d5ebb"
       },
+      "./handlers/forum/deleteforum.ts": {
+        "version": "e6aa7d9dbe80b15a930178f66acb968d86b900afcb051103e138a0e017766468",
+        "signature": "80d9c8b78afe336f38a652789e5e787b74398ef9d986478f1ddbf999471b4814"
+      },
       "./handlers/forum/getforumusers.ts": {
         "version": "cae529a149fa1532c620e890f508d3e7ad9d063c2e0bbc8dfc82fd77ae70473d",
         "signature": "f5e21eec6fd59bcbcc3d8d28f4ce6e253d89ce41a71293196eaf6604774aa7bc"
@@ -414,12 +414,12 @@
         "signature": "26c5cd8ef817bf545a4ba934695586358bd44e1c44e9359d90c9f5cbc877ea56"
       },
       "./handlers/forum/addusertoforum.ts": {
-        "version": "f465c6419fb21cb3295529b6a0921d33c65d260da180bcbeb61ee27b8d05bb25",
+        "version": "5c22fb5e9bb2c2c6ec5958cde30b6e354e513e31cd9da01707e447b8b729e9f8",
         "signature": "5152c4c7d3a2de796251fc7f5cdac21a77ea20aa6d59eb94307070c47bf9f611"
       },
-      "./handlers/forum/addgrouptoforum.ts": {
-        "version": "36b297fa972ae6adf492476b712318cf2a4a3a6288eac030c0e8b03d9cb7c8fa",
-        "signature": "6687c47a94442322e0f8b3f3da5f53c2272144137a5b809338808f681970f9dd"
+      "./handlers/forum/createforum.ts": {
+        "version": "0fc0dd4f273d8d8e96c19f7811b72d0192d7c727aa3cccdb75baaa77d5c30a80",
+        "signature": "5677e79ea653046e9d814ba25fd3635ab96c8f9a221b8c79fa5f824d69139cb9"
       },
       "./handlers/topic/gettopics.ts": {
         "version": "2a6e4cd52a13667fe54f7c34b01a485d9e980d48d6185f4f0efcd820ff05437e",
@@ -434,12 +434,20 @@
         "signature": "92754972ebf936eeb41e53e10628a10712b5213930d5fb68e130efdb624c812f"
       },
       "./server.ts": {
-        "version": "ec0275921ce570dbee4f845a1fab9f04298eda472225d8f14212e72a7dd9d9c9",
+        "version": "9f244f1c4a13ad6bd0c660b986feb40f0df63567fe736f1ed5e7539b51b92cfb",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "./test1.ts": {
         "version": "935b9e7f848003668f26e76beaf91a21153584e8fb7291ffbb216c41324f7dd0",
         "signature": "408a7dd55c9aad15729e5c449a842227274d816a82d62a2f11cc34adc4b58090"
+      },
+      "./handlers/forum/addgrouptoforum.ts": {
+        "version": "36b297fa972ae6adf492476b712318cf2a4a3a6288eac030c0e8b03d9cb7c8fa",
+        "signature": "6687c47a94442322e0f8b3f3da5f53c2272144137a5b809338808f681970f9dd"
+      },
+      "./handlers/user/createuser.ts": {
+        "version": "89eac200d2be4ae412028943e07d80ce4c4dc9e1e005be94a9e3f43ea111a8a1",
+        "signature": "04807a97139aa5722a126fb01126c186d6396cc02e1d7f586d3a3382d982975b"
       },
       "./node_modules/@types/cors/index.d.ts": {
         "version": "75a5ac517fc41fdbce6a98709ea10dd440c28c3b5b773339d7d29565a4204e8f",
@@ -959,13 +967,6 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "./handlers/user/createuser.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./services/axiosservice.ts",
-        "./types.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "./handlers/group/getgroups.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
@@ -1001,6 +1002,13 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "./handlers/forum/deleteforum.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./services/axiosservice.ts",
+        "./types.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./handlers/forum/getforumusers.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
@@ -1022,7 +1030,7 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "./handlers/forum/addgrouptoforum.ts": [
+      "./handlers/forum/createforum.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
@@ -1055,16 +1063,16 @@
         "./middleware/joivalidation.ts",
         "./handlers/user/getusers.ts",
         "./handlers/user/getuserbyid.ts",
-        "./handlers/user/createuser.ts",
         "./handlers/group/getgroups.ts",
         "./handlers/group/getgroupbyid.ts",
         "./handlers/group/creategroup.ts",
         "./handlers/forum/getforums.ts",
         "./handlers/forum/getforumbyid.ts",
+        "./handlers/forum/deleteforum.ts",
         "./handlers/forum/getforumusers.ts",
         "./handlers/forum/getforumgroups.ts",
         "./handlers/forum/addusertoforum.ts",
-        "./handlers/forum/addgrouptoforum.ts",
+        "./handlers/forum/createforum.ts",
         "./handlers/topic/gettopics.ts",
         "./handlers/topic/gettopicbyid.ts",
         "./handlers/post/getposts.ts",
@@ -1072,6 +1080,20 @@
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "./test1.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./handlers/forum/addgrouptoforum.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./services/axiosservice.ts",
+        "./types.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./handlers/user/createuser.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./services/axiosservice.ts",
+        "./types.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1569,9 +1591,6 @@
       "./handlers/user/getuserbyid.ts": [
         "./types.ts"
       ],
-      "./handlers/user/createuser.ts": [
-        "./types.ts"
-      ],
       "./handlers/group/getgroups.ts": [
         "./types.ts"
       ],
@@ -1587,6 +1606,9 @@
       "./handlers/forum/getforumbyid.ts": [
         "./types.ts"
       ],
+      "./handlers/forum/deleteforum.ts": [
+        "./types.ts"
+      ],
       "./handlers/forum/getforumusers.ts": [
         "./types.ts"
       ],
@@ -1596,7 +1618,7 @@
       "./handlers/forum/addusertoforum.ts": [
         "./types.ts"
       ],
-      "./handlers/forum/addgrouptoforum.ts": [
+      "./handlers/forum/createforum.ts": [
         "./types.ts"
       ],
       "./handlers/topic/gettopics.ts": [
@@ -1606,6 +1628,12 @@
         "./types.ts"
       ],
       "./handlers/post/getposts.ts": [
+        "./types.ts"
+      ],
+      "./handlers/forum/addgrouptoforum.ts": [
+        "./types.ts"
+      ],
+      "./handlers/user/createuser.ts": [
         "./types.ts"
       ],
       "./node_modules/@types/cors/index.d.ts": [
@@ -1721,12 +1749,12 @@
       "./services/axiosservice.ts",
       "./handlers/user/getusers.ts",
       "./handlers/user/getuserbyid.ts",
-      "./handlers/user/createuser.ts",
       "./handlers/group/getgroups.ts",
       "./handlers/group/getgroupbyid.ts",
       "./handlers/group/creategroup.ts",
       "./handlers/forum/getforums.ts",
       "./handlers/forum/getforumbyid.ts",
+      "./handlers/forum/deleteforum.ts",
       "./handlers/forum/getforumusers.ts",
       "./handlers/forum/getforumgroups.ts",
       "./handlers/forum/addusertoforum.ts",
@@ -1735,10 +1763,12 @@
       "./handlers/post/getposts.ts",
       "./server.ts",
       "./test1.ts",
+      "./handlers/forum/addgrouptoforum.ts",
+      "./handlers/user/createuser.ts",
       "./node_modules/@types/cors/index.d.ts",
       "./node_modules/@types/hapi__joi/index.d.ts",
       "./node_modules/@types/swagger-ui-express/index.d.ts",
-      "./handlers/forum/addgrouptoforum.ts"
+      "./handlers/forum/createforum.ts"
     ]
   },
   "version": "3.6.2"

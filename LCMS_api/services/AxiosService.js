@@ -19,9 +19,7 @@ exports.PHPBB_POST = async (url, params) => {
             rejectUnauthorized: false
         })
     });
-    const result = await axiosInstance({
-        method: 'post',
-        url,
+    const result = await axiosInstance.post(url, {
         params
     });
     return result;

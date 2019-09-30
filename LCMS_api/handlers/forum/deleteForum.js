@@ -2,36 +2,37 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
-const route = `/group`;
-const summary = "Create group";
-const tag = "Group";
+const route = `/forum/delete`;
+const summary = "Delete forum by forum id";
+const tag = "Forum";
 const schema = joi
     .object()
     .keys({
     query: joi.object().keys({
-        group_name: joi
-            .string()
-            .description("The name of the new group")
-            .required(),
-        group_desc: joi
-            .string()
-            .description("A description of the group")
+        forum_id: joi
+            .number()
+            .integer()
+            .positive()
+            .description("The PHPBB Forum Id")
+            .required()
     })
 })
     .options({ allowUnknown: true });
 const handler = async (request, response) => {
-    const { group_name, group_desc } = request.query;
+    const { forum_id } = request.query;
+    const params = {
+        forum_id,
+    };
     const queryParams = {
-        group_name,
-        group_desc
+        forum_id
     };
     var esc = encodeURIComponent;
     var queryString = Object.keys(queryParams)
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/createGroup.php?" + queryString;
+    const url = "http://localhost/rivertown/phpbb/LCMS_api/deleteForum.php?" + queryString;
     try {
-        const result = await AxiosService_1.PHPBB_POST(url);
+        const result = await AxiosService_1.PHPBB_POST(url, params);
         response.send(result.data);
     }
     catch (err) {
@@ -41,12 +42,12 @@ const handler = async (request, response) => {
         });
     }
 };
-const CreateGroupConfig = {
+const DeleteForumConfig = {
     route,
     summary,
     tag,
     schema,
     handler
 };
-exports.default = CreateGroupConfig;
-//# sourceMappingURL=createGroup.js.map
+exports.default = DeleteForumConfig;
+//# sourceMappingURL=deleteForum.js.map

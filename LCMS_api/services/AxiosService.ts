@@ -16,15 +16,14 @@ export const PHPBB_GET = async (url: string, params?: object): Promise<any> => {
 }
 
 export const PHPBB_POST = async (url: string, params?: object): Promise<any> => {
+
     const axiosInstance: AxiosInstance = axios.create({
         httpsAgent: new https.Agent({
             rejectUnauthorized: false
         })
     });
 
-    const result: AxiosResponse<any> = await axiosInstance({
-        method: 'post',
-        url,
+    const result: AxiosResponse<any> = await axiosInstance.post<any>(url, {
         params
     });
 

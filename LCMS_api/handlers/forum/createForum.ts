@@ -4,59 +4,55 @@ import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
 
-const route: string = `/forum/:id/user/:user_id`;
-const summary: string = "Add user to a forum";
+const route: string = `/forum`;
+const summary: string = "Create forum";
 const tag: string = "Forum";
 const schema: ObjectSchema = joi
     .object()
     .keys({
-        params: joi.object().keys({
-            id: joi
-                .number()
-                .integer()
-                .min(0)
-                .description("The PHPBB Forum Id")
-                .required(),
-            user_id: joi
-                .number()
-                .integer()
-                .min(0)
-                .description("The PHPBB User Id")
-                .required()
-        }),
         query: joi.object().keys({
-            auth_option_id: joi
-                .number()
-                .integer()
-                .min(0)
-                .description("The PHPBB Auth Option Id")
+            forum_name: joi
+                .string()
+                .description("The name of the new forum")
                 .required(),
-            auth_role_id: joi
+            left_id: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB Auth Role Id")
+                .description("The left id in the forum tree")
                 .required(),
-            auth_setting: joi
+            right_id: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB Auth Setting")
-                .required()
+                .description("The right id in the forum tree")
+                .required(),
+            parent_id: joi
+                .number()
+                .integer()
+                .min(0)
+                .description("The id of the parent forum"),
+            forum_parents: joi
+                .string()
+                .description("The id of the parent forum"),
+            forum_desc: joi
+                .string()
+                .description("A description of the forum")
         })
     })
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const { id: forum_id, user_id: user_id } = request.params;
-    const { auth_option_id, auth_role_id, auth_setting } = request.query;
+    
+    const { forum_name, left_id, right_id, parent_id, forum_parents, forum_desc } = request.query;
 
     const queryParams: object = {
-        forum_id,
-        user_id,
-        auth_option_id,
-        auth_role_id,
-        auth_setting
+        forum_name,
+        left_id,
+        right_id,
+        parent_id: parent_id || 0,
+        forum_parents: forum_parents || '',
+        forum_desc: forum_desc || ''
     }
 
     var esc = encodeURIComponent;
@@ -64,7 +60,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    let url: string = "http://localhost/rivertown/phpbb/LCMS_api/addUserToForum.php?" + queryString;
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createForum.php?" + queryString;
 
     try {
         const result = await PHPBB_POST(url);
@@ -77,7 +73,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
     }  
 }
 
-const AddUserToForumConfig: RouteConfigObject = {
+const CreateForumConfig: RouteConfigObject = {
     route,
     summary,
     tag,
@@ -85,4 +81,4 @@ const AddUserToForumConfig: RouteConfigObject = {
     handler
 }
 
-export default AddUserToForumConfig;
+export default CreateForumConfig;
