@@ -15,7 +15,7 @@ const getForumUsers_1 = require("./handlers/forum/getForumUsers");
 const getForumGroups_1 = require("./handlers/forum/getForumGroups");
 const addUserToForum_1 = require("./handlers/forum/addUserToForum");
 const createForum_1 = require("./handlers/forum/createForum");
-// import AddGroupToForumConfig from "./handlers/forum/addGroupToForum";
+const addGroupToForum_1 = require("./handlers/forum/addGroupToForum");
 const getTopics_1 = require("./handlers/topic/getTopics");
 const getTopicById_1 = require("./handlers/topic/getTopicById");
 const getPosts_1 = require("./handlers/post/getPosts");
@@ -37,7 +37,7 @@ const getPosts_1 = require("./handlers/post/getPosts");
         // app.post(CreateUserConfig.route, CreateUserConfig.handler);
         app.post(createGroup_1.default.route, JoiValidation_1.default(createGroup_1.default.schema), createGroup_1.default.handler);
         app.post(addUserToForum_1.default.route, JoiValidation_1.default(addUserToForum_1.default.schema), addUserToForum_1.default.handler);
-        // app.get(AddGroupToForumConfig.route, JoiValidation(AddGroupToForumConfig.schema), AddGroupToForumConfig.handler);
+        app.post(addGroupToForum_1.default.route, JoiValidation_1.default(addGroupToForum_1.default.schema), addGroupToForum_1.default.handler);
         app.post(createForum_1.default.route, JoiValidation_1.default(createForum_1.default.schema), createForum_1.default.handler);
         app.post(deleteForum_1.default.route, JoiValidation_1.default(deleteForum_1.default.schema), deleteForum_1.default.handler);
         app.listen(port, () => {

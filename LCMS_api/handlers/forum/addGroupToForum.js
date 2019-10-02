@@ -40,18 +40,22 @@ const schema = joi
 })
     .options({ allowUnknown: true });
 const handler = async (request, response) => {
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/addGroupToForum.php";
     const { id: forum_id, group_id: group_id } = request.params;
     const { auth_option_id, auth_role_id, auth_setting } = request.query;
-    const params = {
+    const queryParams = {
         forum_id,
         group_id,
-        auth_option_id,
-        auth_role_id,
-        auth_setting
+        auth_option_id: auth_option_id || 1,
+        auth_role_id: auth_role_id || 15,
+        auth_setting: auth_setting || 1
     };
+    var esc = encodeURIComponent;
+    var queryString = Object.keys(queryParams)
+        .map(k => esc(k) + '=' + esc(queryParams[k]))
+        .join('&');
+    const url = "http://localhost/rivertown/phpbb/LCMS_api/addGroupToForum.php?" + queryString;
     try {
-        const result = await AxiosService_1.PHPBB_GET(url, params);
+        const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);
     }
     catch (err) {

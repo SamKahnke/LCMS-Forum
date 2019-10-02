@@ -1,7 +1,7 @@
 import express = require("express");
 import * as joi from "joi";
 import { ObjectSchema } from "joi";
-import { PHPBB_GET } from "../../services/AxiosService";
+import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
 
 const route: string = `/forum/:id/group/:group_id`;
@@ -43,19 +43,25 @@ const schema: ObjectSchema = joi
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/addGroupToForum.php";
     const { id: forum_id, group_id: group_id } = request.params;
     const { auth_option_id, auth_role_id, auth_setting } = request.query;
-    const params: object = {
+    
+    const queryParams: object = {
         forum_id,
         group_id,
-        auth_option_id,
-        auth_role_id,
-        auth_setting
+        auth_option_id: auth_option_id || 1,
+        auth_role_id: auth_role_id || 15,
+        auth_setting: auth_setting || 1
     }
 
+    var esc = encodeURIComponent;
+    var queryString = Object.keys(queryParams)
+        .map(k => esc(k) + '=' + esc(queryParams[k]))
+        .join('&');
+
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/addGroupToForum.php?" + queryString;
     try {
-        const result = await PHPBB_GET(url, params);
+        const result = await PHPBB_POST(url);
         response.send(result.data);
     } catch (err) {
         console.error(err.message);

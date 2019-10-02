@@ -29,20 +29,17 @@ const schema: ObjectSchema = joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB Auth Option Id")
-                .required(),
+                .description("The PHPBB Auth Option Id"),
             auth_role_id: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB Auth Role Id")
-                .required(),
+                .description("The PHPBB Auth Role Id"),
             auth_setting: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB Auth Setting")
-                .required()
+                .description("The PHPBB Auth Setting"),
         })
     })
     .options({ allowUnknown: true });
@@ -54,9 +51,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
     const queryParams: object = {
         forum_id,
         user_id,
-        auth_option_id,
-        auth_role_id,
-        auth_setting
+        auth_option_id: auth_option_id || 1,
+        auth_role_id: auth_role_id || 15,
+        auth_setting: auth_setting || 1
     }
 
     var esc = encodeURIComponent;

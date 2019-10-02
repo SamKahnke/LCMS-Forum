@@ -13,7 +13,7 @@ import GetForumUsersConfig from "./handlers/forum/getForumUsers";
 import GetForumGroupsConfig from "./handlers/forum/getForumGroups";
 import AddUserToForumConfig from "./handlers/forum/addUserToForum";
 import CreateForumConfig from "./handlers/forum/createForum";
-// import AddGroupToForumConfig from "./handlers/forum/addGroupToForum";
+import AddGroupToForumConfig from "./handlers/forum/addGroupToForum";
 import GetTopicsConfig from "./handlers/topic/getTopics";
 import GetTopicByIdConfig from "./handlers/topic/getTopicById";
 import GetPostsConfig from "./handlers/post/getPosts";
@@ -42,7 +42,7 @@ import GetPostsConfig from "./handlers/post/getPosts";
         // app.post(CreateUserConfig.route, CreateUserConfig.handler);
         app.post(CreateGroupConfig.route, JoiValidation(CreateGroupConfig.schema), CreateGroupConfig.handler);
         app.post(AddUserToForumConfig.route, JoiValidation(AddUserToForumConfig.schema), AddUserToForumConfig.handler);
-        // app.get(AddGroupToForumConfig.route, JoiValidation(AddGroupToForumConfig.schema), AddGroupToForumConfig.handler);
+        app.post(AddGroupToForumConfig.route, JoiValidation(AddGroupToForumConfig.schema), AddGroupToForumConfig.handler);
         app.post(CreateForumConfig.route, JoiValidation(CreateForumConfig.schema), CreateForumConfig.handler);
         app.post(DeleteForumConfig.route, JoiValidation(DeleteForumConfig.schema), DeleteForumConfig.handler);
 
