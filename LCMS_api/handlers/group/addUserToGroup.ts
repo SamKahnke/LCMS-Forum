@@ -4,18 +4,18 @@ import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
 
-const route: string = `/forum/:id/group/:group_id`;
-const summary: string = "Add group to a forum";
-const tag: string = "Forum";
+const route: string = `/group/:group_id/user/:user_id`;
+const summary: string = "Add user to a group";
+const tag: string = "Group";
 const schema: ObjectSchema = joi
     .object()
     .keys({
         params: joi.object().keys({
-            id: joi
+            user_id: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB Forum Id")
+                .description("The PHPBB User Id")
                 .required(),
             group_id: joi
                 .number()
@@ -23,35 +23,29 @@ const schema: ObjectSchema = joi
                 .min(0)
                 .description("The PHPBB Group Id")
                 .required(),
-            auth_option_id: joi
+            group_leader: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB Auth Option Id"),
-            auth_role_id: joi
+                .description("The PHPBB Group Leader Id"),
+            user_pending: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB Auth Role Id"),
-            auth_setting: joi
-                .number()
-                .integer()
-                .min(0)
-                .description("The PHPBB Auth Setting")
+                .description("Tracks a pending group invite")
         })
     })
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const { id: forum_id, group_id: group_id } = request.params;
-    const { auth_option_id, auth_role_id, auth_setting } = request.query;
+    const { user_id: user_id, group_id: group_id } = request.params;
+    const { group_leader, user_pending } = request.query;
     
     const queryParams: object = {
-        forum_id,
+        user_id,
         group_id,
-        auth_option_id: auth_option_id || 1,
-        auth_role_id: auth_role_id || 15,
-        auth_setting: auth_setting || 1
+        group_leader: group_leader || 0,
+        user_pending: user_pending || 0
     }
 
     var esc = encodeURIComponent;
@@ -59,8 +53,8 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/addGroupToForum.php?" + queryString;
-    
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/addUserToGroup.php?" + queryString;
+
     try {
         const result = await PHPBB_POST(url);
         response.send(result.data);
@@ -72,7 +66,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
     }  
 }
 
-const AddGroupToForumConfig: RouteConfigObject = {
+const AddUserToGroupConfig: RouteConfigObject = {
     route,
     summary,
     tag,
@@ -80,4 +74,4 @@ const AddGroupToForumConfig: RouteConfigObject = {
     handler
 }
 
-export default AddGroupToForumConfig;
+export default AddUserToGroupConfig;
