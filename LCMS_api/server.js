@@ -21,6 +21,7 @@ const getTopics_1 = require("./handlers/topic/getTopics");
 const getTopicById_1 = require("./handlers/topic/getTopicById");
 const createTopic_1 = require("./handlers/topic/createTopic");
 const deleteTopic_1 = require("./handlers/topic/deleteTopic");
+const deleteUser_1 = require("./handlers/user/deleteUser");
 (async () => {
     try {
         const port = +(process.env.APP_PORT || 2500);
@@ -44,6 +45,7 @@ const deleteTopic_1 = require("./handlers/topic/deleteTopic");
         app.post(deleteForum_1.default.route, JoiValidation_1.default(deleteForum_1.default.schema), deleteForum_1.default.handler);
         app.post(createTopic_1.default.route, JoiValidation_1.default(createTopic_1.default.schema), createTopic_1.default.handler);
         app.post(deleteTopic_1.default.route, JoiValidation_1.default(deleteTopic_1.default.schema), deleteTopic_1.default.handler);
+        app.post(deleteUser_1.default.route, JoiValidation_1.default(deleteUser_1.default.schema), deleteUser_1.default.handler);
         app.listen(port, () => {
             console.log(`Listening on port ${port}`);
         });
