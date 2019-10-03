@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
-const route = `/forum/delete`;
+const route = `/forum/:forum_id/delete`;
 const summary = "Delete forum by forum id";
 const tag = "Forum";
 const schema = joi
     .object()
     .keys({
-    query: joi.object().keys({
+    params: joi.object().keys({
         forum_id: joi
             .number()
             .integer()
@@ -19,10 +19,7 @@ const schema = joi
 })
     .options({ allowUnknown: true });
 const handler = async (request, response) => {
-    const { forum_id } = request.query;
-    const params = {
-        forum_id,
-    };
+    const { forum_id } = request.params;
     const queryParams = {
         forum_id
     };
@@ -32,7 +29,7 @@ const handler = async (request, response) => {
         .join('&');
     const url = "http://localhost/rivertown/phpbb/LCMS_api/deleteForum.php?" + queryString;
     try {
-        const result = await AxiosService_1.PHPBB_POST(url, params);
+        const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);
     }
     catch (err) {

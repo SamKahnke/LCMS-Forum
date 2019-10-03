@@ -4,13 +4,13 @@ import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
 
-const route: string = `/forum/delete`;
+const route: string = `/forum/:forum_id/delete`;
 const summary: string = "Delete forum by forum id";
 const tag: string = "Forum";
 const schema: ObjectSchema = joi
     .object()
     .keys({
-        query: joi.object().keys({
+        params: joi.object().keys({
             forum_id: joi
                 .number()
                 .integer()
@@ -22,10 +22,7 @@ const schema: ObjectSchema = joi
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const { forum_id } = request.query;
-    const params: object = {
-        forum_id,
-    }
+    const { forum_id } = request.params;
 
     const queryParams: object = {
         forum_id
@@ -38,7 +35,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
     const url: string = "http://localhost/rivertown/phpbb/LCMS_api/deleteForum.php?" + queryString;
     try {
-        const result = await PHPBB_POST(url, params);
+        const result = await PHPBB_POST(url);
         response.send(result.data);
     } catch (err) {
         console.error(err.message);

@@ -4,13 +4,13 @@ import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
 
-const route: string = `/topic/delete`;
+const route: string = `/topic/:topic_id/delete`;
 const summary: string = "Delete topic by topic id";
 const tag: string = "Topic";
 const schema: ObjectSchema = joi
     .object()
     .keys({
-        query: joi.object().keys({
+        params: joi.object().keys({
             topic_id: joi
                 .number()
                 .integer()
@@ -22,10 +22,7 @@ const schema: ObjectSchema = joi
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const { topic_id } = request.query;
-    const params: object = {
-        topic_id,
-    }
+    const { topic_id } = request.params;
 
     const queryParams: object = {
         topic_id
@@ -38,7 +35,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
     const url: string = "http://localhost/rivertown/phpbb/LCMS_api/deleteTopic.php?" + queryString;
     try {
-        const result = await PHPBB_POST(url, params);
+        const result = await PHPBB_POST(url);
         response.send(result.data);
     } catch (err) {
         console.error(err.message);

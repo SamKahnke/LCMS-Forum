@@ -402,7 +402,7 @@
         "signature": "83e3a74421046d70becfb07be2a8816a02966eaa8596bed8eb1bffcb4d9d5ebb"
       },
       "./handlers/forum/deleteforum.ts": {
-        "version": "e6aa7d9dbe80b15a930178f66acb968d86b900afcb051103e138a0e017766468",
+        "version": "8fb3e6b225354924766ffc1e1b7adad97bd870a90a5844bb3833347174cc8159",
         "signature": "80d9c8b78afe336f38a652789e5e787b74398ef9d986478f1ddbf999471b4814"
       },
       "./handlers/forum/getforumusers.ts": {
@@ -442,7 +442,7 @@
         "signature": "884451d5162f2d60c4fc419ccb90a340604ad2abdbe0fe810a03d9c357bfca07"
       },
       "./handlers/topic/deletetopic.ts": {
-        "version": "036413a637fe93c1ce37daf88894b48a0dbcbaa99bc5fa5e690a0793114cfab6",
+        "version": "03c30ec6110dde6ae5cb614a84e7c093dabbe12f9ade70172a5902fcfdba88e4",
         "signature": "c16b2171e6ed9aa2fa2a1bcfc4499b72ff91110b3b9802e332594084b1d3477f"
       },
       "./server.ts": {
@@ -1661,6 +1661,9 @@
       "./handlers/topic/createtopic.ts": [
         "./types.ts"
       ],
+      "./handlers/topic/deletetopic.ts": [
+        "./types.ts"
+      ],
       "./handlers/user/createuser.ts": [
         "./types.ts"
       ],
@@ -1679,14 +1682,9 @@
         "./node_modules/@types/serve-static/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "./handlers/topic/deletetopic.ts": [
-        "./types.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
-      "./handlers/topic/deletetopic.ts",
-      "./server.ts",
       "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.es2015.d.ts",
       "./node_modules/typescript/lib/lib.es2016.d.ts",
@@ -1787,7 +1785,6 @@
       "./handlers/group/creategroup.ts",
       "./handlers/forum/getforums.ts",
       "./handlers/forum/getforumbyid.ts",
-      "./handlers/forum/deleteforum.ts",
       "./handlers/forum/getforumusers.ts",
       "./handlers/forum/getforumgroups.ts",
       "./handlers/forum/addusertoforum.ts",
@@ -1797,11 +1794,14 @@
       "./handlers/topic/gettopics.ts",
       "./handlers/topic/gettopicbyid.ts",
       "./handlers/topic/createtopic.ts",
+      "./handlers/topic/deletetopic.ts",
+      "./server.ts",
       "./test1.ts",
       "./handlers/user/createuser.ts",
       "./node_modules/@types/cors/index.d.ts",
       "./node_modules/@types/hapi__joi/index.d.ts",
-      "./node_modules/@types/swagger-ui-express/index.d.ts"
+      "./node_modules/@types/swagger-ui-express/index.d.ts",
+      "./handlers/forum/deleteforum.ts"
     ]
   },
   "version": "3.6.2"
