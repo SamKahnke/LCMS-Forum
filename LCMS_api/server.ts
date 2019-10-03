@@ -22,6 +22,7 @@ import GetTopicsConfig from "./handlers/topic/getTopics";
 import GetTopicByIdConfig from "./handlers/topic/getTopicById";
 import CreateTopicConfig from "./handlers/topic/createTopic";
 import DeleteTopicConfig from "./handlers/topic/deleteTopic";
+import CloseTopicConfig from "./handlers/topic/closeTopic";
 
 // import CreateUserConfig from "./handlers/user/createUser";
 import DeleteUserConfig from "./handlers/user/deleteUser";
@@ -58,6 +59,7 @@ import DeleteUserConfig from "./handlers/user/deleteUser";
 
         app.post(CreateTopicConfig.route, JoiValidation(CreateTopicConfig.schema), CreateTopicConfig.handler);
         app.post(DeleteTopicConfig.route, JoiValidation(DeleteTopicConfig.schema), DeleteTopicConfig.handler);
+        app.post(CloseTopicConfig.route, JoiValidation(CloseTopicConfig.schema), CloseTopicConfig.handler);
 
         app.post(DeleteUserConfig.route, JoiValidation(DeleteUserConfig.schema), DeleteUserConfig.handler);
 
