@@ -17,7 +17,8 @@ import CreateForumConfig from "./handlers/forum/createForum";
 import AddGroupToForumConfig from "./handlers/forum/addGroupToForum";
 import GetTopicsConfig from "./handlers/topic/getTopics";
 import GetTopicByIdConfig from "./handlers/topic/getTopicById";
-import GetPostsConfig from "./handlers/post/getPosts";
+import CreateTopicConfig from "./handlers/topic/createTopic";
+import DeleteTopicConfig from "./handlers/topic/deleteTopic";
 
 (async () => {
     try {
@@ -38,15 +39,18 @@ import GetPostsConfig from "./handlers/post/getPosts";
         app.get(GetTopicsConfig.route, GetTopicsConfig.handler);
         app.get(GetTopicByIdConfig.route, JoiValidation(GetTopicByIdConfig.schema), GetTopicByIdConfig.handler);
 
-        app.get(GetPostsConfig.route, GetPostsConfig.handler);
-
         // app.post(CreateUserConfig.route, CreateUserConfig.handler);
         app.post(CreateGroupConfig.route, JoiValidation(CreateGroupConfig.schema), CreateGroupConfig.handler);
+
         app.post(AddUserToForumConfig.route, JoiValidation(AddUserToForumConfig.schema), AddUserToForumConfig.handler);
         app.post(AddUserToGroupConfig.route, JoiValidation(AddUserToGroupConfig.schema), AddUserToGroupConfig.handler);
         app.post(AddGroupToForumConfig.route, JoiValidation(AddGroupToForumConfig.schema), AddGroupToForumConfig.handler);
+
         app.post(CreateForumConfig.route, JoiValidation(CreateForumConfig.schema), CreateForumConfig.handler);
         app.post(DeleteForumConfig.route, JoiValidation(DeleteForumConfig.schema), DeleteForumConfig.handler);
+
+        app.post(CreateTopicConfig.route, JoiValidation(CreateTopicConfig.schema), CreateTopicConfig.handler);
+        app.post(DeleteTopicConfig.route, JoiValidation(DeleteTopicConfig.schema), DeleteTopicConfig.handler);
 
         app.listen(port, () => {
             console.log(`Listening on port ${port}`);

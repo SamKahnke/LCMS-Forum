@@ -25,7 +25,6 @@ $group_message_limit = $request->variable('group_message_limit', 0);
 $group_legend = $request->variable('group_legend', 0);
 $group_max_recipients = $request->variable('group_max_recipients', 0);
 
-
 function create_group($group_type, $group_founder_manage, $group_skip_auth,
 					$group_name, $group_desc, $group_desc_bitfield,
 					$group_desc_options, $group_desc_uid, $group_display,
@@ -41,8 +40,8 @@ function create_group($group_type, $group_founder_manage, $group_skip_auth,
 	. $group_type . ', '
 	. $group_founder_manage . ', '
 	. $group_skip_auth . ',
-	\''. $group_name . '\',
-	\''. $group_desc . '\', '
+	\'' . $group_name . '\',
+	\'' . $group_desc . '\', '
 	. $group_desc_bitfield . ', '
 	. $group_desc_options . ', '
 	. $group_desc_uid . ', '
@@ -60,7 +59,6 @@ function create_group($group_type, $group_founder_manage, $group_skip_auth,
 	. $group_max_recipients
 	. ')';
 
-	echo $sql;
 	$result = $db->sql_query($sql);
 
 	http_response_code(200);

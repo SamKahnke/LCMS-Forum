@@ -437,12 +437,16 @@
         "version": "aef0309c39c62406117a30b3169274c61a46ade17cdb387edf074484e80742e6",
         "signature": "a2b6c226c949c8e67bb956b3c1a0fc08832fd2ba56ca1b57bd92521c084c9475"
       },
-      "./handlers/post/getposts.ts": {
-        "version": "263f536e14c016bed854cf2ac8bf9033f2aff698a4d9a956349d25d95a14873a",
-        "signature": "92754972ebf936eeb41e53e10628a10712b5213930d5fb68e130efdb624c812f"
+      "./handlers/topic/createtopic.ts": {
+        "version": "ad8a17d86012a1034eae8fb4860d5ad190caf36c0f41d5eb1cc86bee030fc801",
+        "signature": "884451d5162f2d60c4fc419ccb90a340604ad2abdbe0fe810a03d9c357bfca07"
+      },
+      "./handlers/topic/deletetopic.ts": {
+        "version": "036413a637fe93c1ce37daf88894b48a0dbcbaa99bc5fa5e690a0793114cfab6",
+        "signature": "c16b2171e6ed9aa2fa2a1bcfc4499b72ff91110b3b9802e332594084b1d3477f"
       },
       "./server.ts": {
-        "version": "d5dbd5eeaed23e277631407af8aac5125c3c090ce96a5062d58621dd6ff38374",
+        "version": "2cd77d1a9f6917999b19cb9bb29a5eeb577a1f83cc2a6c806baaf272c174f794",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "./test1.ts": {
@@ -1069,7 +1073,14 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "./handlers/post/getposts.ts": [
+      "./handlers/topic/createtopic.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./services/axiosservice.ts",
+        "./types.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./handlers/topic/deletetopic.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
@@ -1095,7 +1106,8 @@
         "./handlers/forum/addgrouptoforum.ts",
         "./handlers/topic/gettopics.ts",
         "./handlers/topic/gettopicbyid.ts",
-        "./handlers/post/getposts.ts",
+        "./handlers/topic/createtopic.ts",
+        "./handlers/topic/deletetopic.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1646,7 +1658,7 @@
       "./handlers/topic/gettopicbyid.ts": [
         "./types.ts"
       ],
-      "./handlers/post/getposts.ts": [
+      "./handlers/topic/createtopic.ts": [
         "./types.ts"
       ],
       "./handlers/user/createuser.ts": [
@@ -1667,9 +1679,14 @@
         "./node_modules/@types/serve-static/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./handlers/topic/deletetopic.ts": [
+        "./types.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
+      "./handlers/topic/deletetopic.ts",
+      "./server.ts",
       "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.es2015.d.ts",
       "./node_modules/typescript/lib/lib.es2016.d.ts",
@@ -1779,8 +1796,7 @@
       "./handlers/forum/addgrouptoforum.ts",
       "./handlers/topic/gettopics.ts",
       "./handlers/topic/gettopicbyid.ts",
-      "./handlers/post/getposts.ts",
-      "./server.ts",
+      "./handlers/topic/createtopic.ts",
       "./test1.ts",
       "./handlers/user/createuser.ts",
       "./node_modules/@types/cors/index.d.ts",
