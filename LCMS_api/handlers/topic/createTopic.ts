@@ -17,27 +17,34 @@ const schema: ObjectSchema = joi
                 .min(0)
                 .description("The forum id under which the topic is being posted")
                 .required(),
-            topic_title: joi
-                .string()
-                .description("The title of the topic")
-                .required(),
-            topic_poster: joi
+            user_id: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The user-id of the topic poster")
+                .description("The user id of the topic poster")
+                .required(),
+            subject: joi
+                .string()
+                .description("The title or subject of the topic")
+                .required(),
+            message: joi
+                .number()
+                .integer()
+                .min(0)
+                .description("The topic's description, or initial post")
                 .required()
         })
     })
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const { forum_id, topic_title, topic_poster } = request.query;
+    const { user_id, forum_id, subject, message } = request.query;
 
     const queryParams: object = {
+        user_id,
         forum_id,
-        topic_title,
-        topic_poster
+        subject,
+        message
     }
 
     var esc = encodeURIComponent;

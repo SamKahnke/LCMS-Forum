@@ -442,7 +442,7 @@
         "signature": "a2b6c226c949c8e67bb956b3c1a0fc08832fd2ba56ca1b57bd92521c084c9475"
       },
       "./handlers/topic/createtopic.ts": {
-        "version": "ad8a17d86012a1034eae8fb4860d5ad190caf36c0f41d5eb1cc86bee030fc801",
+        "version": "989c2dc85b61208fa84a7e63b586ddde9a51b26b58b0e932e5b8f983057c7016",
         "signature": "884451d5162f2d60c4fc419ccb90a340604ad2abdbe0fe810a03d9c357bfca07"
       },
       "./handlers/topic/deletetopic.ts": {
@@ -1823,6 +1823,7 @@
       "./middleware/joivalidation.ts",
       "./node_modules/axios/index.d.ts",
       "./services/axiosservice.ts",
+      "./handlers/user/getusers.ts",
       "./handlers/user/getuserbyid.ts",
       "./handlers/group/getgroups.ts",
       "./handlers/group/getgroupbyid.ts",
@@ -1839,7 +1840,6 @@
       "./handlers/forum/addgrouptoforum.ts",
       "./handlers/topic/gettopics.ts",
       "./handlers/topic/gettopicbyid.ts",
-      "./handlers/topic/createtopic.ts",
       "./handlers/topic/deletetopic.ts",
       "./handlers/topic/closetopic.ts",
       "./handlers/user/deleteuser.ts",
@@ -1849,7 +1849,7 @@
       "./node_modules/@types/cors/index.d.ts",
       "./node_modules/@types/hapi__joi/index.d.ts",
       "./node_modules/@types/swagger-ui-express/index.d.ts",
-      "./handlers/user/getusers.ts"
+      "./handlers/topic/createtopic.ts"
     ]
   },
   "version": "3.6.2"
