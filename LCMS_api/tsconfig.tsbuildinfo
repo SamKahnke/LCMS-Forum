@@ -1661,6 +1661,9 @@
       "./handlers/group/creategroup.ts": [
         "./types.ts"
       ],
+      "./handlers/group/deletegroup.ts": [
+        "./types.ts"
+      ],
       "./handlers/group/addusertogroup.ts": [
         "./types.ts"
       ],
@@ -1700,6 +1703,9 @@
       "./handlers/topic/deletetopic.ts": [
         "./types.ts"
       ],
+      "./handlers/topic/closetopic.ts": [
+        "./types.ts"
+      ],
       "./handlers/user/deleteuser.ts": [
         "./types.ts"
       ],
@@ -1721,18 +1727,9 @@
         "./node_modules/@types/serve-static/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "./handlers/group/deletegroup.ts": [
-        "./types.ts"
-      ],
-      "./handlers/topic/closetopic.ts": [
-        "./types.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
-      "./handlers/group/deletegroup.ts",
-      "./server.ts",
-      "./handlers/topic/closetopic.ts",
       "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.es2015.d.ts",
       "./node_modules/typescript/lib/lib.es2016.d.ts",
@@ -1826,11 +1823,11 @@
       "./middleware/joivalidation.ts",
       "./node_modules/axios/index.d.ts",
       "./services/axiosservice.ts",
-      "./handlers/user/getusers.ts",
       "./handlers/user/getuserbyid.ts",
       "./handlers/group/getgroups.ts",
       "./handlers/group/getgroupbyid.ts",
       "./handlers/group/creategroup.ts",
+      "./handlers/group/deletegroup.ts",
       "./handlers/group/addusertogroup.ts",
       "./handlers/forum/getforums.ts",
       "./handlers/forum/getforumbyid.ts",
@@ -1844,12 +1841,15 @@
       "./handlers/topic/gettopicbyid.ts",
       "./handlers/topic/createtopic.ts",
       "./handlers/topic/deletetopic.ts",
+      "./handlers/topic/closetopic.ts",
       "./handlers/user/deleteuser.ts",
+      "./server.ts",
       "./test1.ts",
       "./handlers/user/createuser.ts",
       "./node_modules/@types/cors/index.d.ts",
       "./node_modules/@types/hapi__joi/index.d.ts",
-      "./node_modules/@types/swagger-ui-express/index.d.ts"
+      "./node_modules/@types/swagger-ui-express/index.d.ts",
+      "./handlers/user/getusers.ts"
     ]
   },
   "version": "3.6.2"
