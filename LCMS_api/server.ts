@@ -3,6 +3,7 @@ import JoiValidation from "./middleware/JoiValidation";
 import GetUsersConfig from "./handlers/user/getUsers";
 import GetUserByIdConfig from "./handlers/user/getUserById";
 
+import LoginConfig from "./handlers/login/login";
 import GetGroupsConfig from "./handlers/group/getGroups";
 import GetGroupByIdConfig from "./handlers/group/getGroupById";
 import CreateGroupConfig from "./handlers/group/createGroup";
@@ -47,6 +48,8 @@ import DeleteUserConfig from "./handlers/user/deleteUser";
         app.get(GetTopicByIdConfig.route, JoiValidation(GetTopicByIdConfig.schema), GetTopicByIdConfig.handler);
 
         // app.post(CreateUserConfig.route, CreateUserConfig.handler);
+        app.post(LoginConfig.route, JoiValidation(LoginConfig.schema), LoginConfig.handler);
+
         app.post(CreateGroupConfig.route, JoiValidation(CreateGroupConfig.schema), CreateGroupConfig.handler);
         app.post(DeleteGroupConfig.route, JoiValidation(DeleteGroupConfig.schema), DeleteGroupConfig.handler);
 
