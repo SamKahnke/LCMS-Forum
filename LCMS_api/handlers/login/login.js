@@ -7,17 +7,18 @@ const summary = "Log user in";
 const tag = "Login";
 const schema = joi
     .object()
-    // .keys({
-    //     query: joi.object().keys({
-    //         group_name: joi
-    //             .string()
-    //             .description("The name of the new group")
-    //             .required(),
-    //         group_desc: joi
-    //             .string()
-    //             .description("A description of the group")
-    //     })
-    // })
+    .keys({
+    query: joi.object().keys({
+        username: joi
+            .string()
+            .description("The user's username")
+            .required(),
+        password: joi
+            .string()
+            .description("The user's password")
+            .required()
+    })
+})
     .options({ allowUnknown: true });
 const handler = async (request, response) => {
     const { username, password } = request.query;

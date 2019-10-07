@@ -9,9 +9,7 @@ $message = $request->variable('message', '\'\'');
 $subject = $request->variable('subject', '\'\'');
 $user_id = $request->variable('user_id', 1);
 $forum_id = $request->variable('forum_id', 1);
-
 $mode = 'post';
-// $username = 'testforum';
 $topic_type = 0;
 $uid = $bitfield = $bbcode_options = '';
 generate_text_for_storage($message, $uid, $bitfield, $bbcode_options, true, true, true);
@@ -43,11 +41,11 @@ $data = array(
     // Email Notification Settings
     'notify_set'        => false,        // (bool)
     'notify'            => false,        // (bool)
-    'post_time'         => 0,        // Set a specific time, use 0 to let submit_post() take care of getting the proper time (int)
-    'forum_name'        => '',        // For identifying the name of the forum in a notification email. (string)
+    'post_time'         => 0,        // Set a specific time, use 0 to let submit_post() take care of getting the proper time
+    'forum_name'        => '',        // For identifying the name of the forum in a notification email.
 
     // Indexing
-    'enable_indexing'    => true,        // Allow indexing the post? (bool)
+    'enable_indexing'    => true,        // Allow indexing the post
 
     // 3.0.6
     'force_approved_state'    => true, // Allow the post to be submitted without going into unapproved queue

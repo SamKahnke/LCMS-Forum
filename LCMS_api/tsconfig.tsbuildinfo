@@ -382,7 +382,7 @@
         "signature": "ccb052fd59fa759f40e33ed3610f76d476146730dc11d78d570caa5d46fd50a2"
       },
       "./handlers/login/login.ts": {
-        "version": "92744347a236b0d27b96e2c2cd1c492a557794c4b82a9698963d506f1e540e68",
+        "version": "784148943895f9378dea3ab148f210c49faa66084d189823c30a1eec8de59c7b",
         "signature": "75cdd2045b51fa6c0604f49c860b06e28b558cade096075b68c426d4f41d6f6a"
       },
       "./handlers/group/getgroups.ts": {
@@ -1840,7 +1840,6 @@
       "./services/axiosservice.ts",
       "./handlers/user/getusers.ts",
       "./handlers/user/getuserbyid.ts",
-      "./handlers/login/login.ts",
       "./handlers/group/getgroups.ts",
       "./handlers/group/getgroupbyid.ts",
       "./handlers/group/creategroup.ts",
@@ -1860,12 +1859,13 @@
       "./handlers/topic/deletetopic.ts",
       "./handlers/topic/closetopic.ts",
       "./handlers/user/deleteuser.ts",
+      "./server.ts",
       "./test1.ts",
       "./handlers/user/createuser.ts",
       "./node_modules/@types/cors/index.d.ts",
       "./node_modules/@types/hapi__joi/index.d.ts",
       "./node_modules/@types/swagger-ui-express/index.d.ts",
-      "./server.ts"
+      "./handlers/login/login.ts"
     ]
   },
   "version": "3.6.2"
