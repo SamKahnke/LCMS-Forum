@@ -5,20 +5,23 @@ $phpEx = substr(strrchr(__FILE__, '.'), 1);
 include($phpbb_root_path . 'common.' . $phpEx);
 include($phpbb_root_path . 'includes/functions_user.' . $phpEx);
 
-// $username = $request->variable('username', '');
-// $user_password = $request->variable('user_password', '');
+$username = $request->variable('username', 'test');
+$password = $request->variable('password', 'testp');
+$email = $request->variable('email', 'e@mail.com');
+$tz = $request->variable('tz', 'UTC');
+$lang = $request->variable('lang', 'en');
 
-// In this example, the $data array should contain the validated input fields for
+// At this point, the $data array should contain the validated input fields for
 // username, password, email, timezone (tz) and the user’s chosen language (lang).
-$username = 'testuser3';
-$password = 'testpassword3';
-$email = 'test3@gmail.com';
-$tz = 'UTC';
-$lang = 'en';
+// $username = 'testuser3';
+// $password = 'testpassword3';
+// $email = 'test3@gmail.com';
+// $tz = 'UTC';
+// $lang = 'en';
 
 $data = array(  
-    'username'            => $username,    // The forum ID in which the post will be placed. (int)
-    'password'            => $password,    // Post a new topic or in an existing one? Set to 0 to create a new one, if not, specify your topic ID here instead.
+    'username'            => $username, 
+    'password'            => $password,
     'email'            => $email,
     'tz'            => $tz,
     'lang'            => $lang, 
@@ -29,6 +32,7 @@ function create_user($data)
     global $db, $user, $auth, $config, $phpbb_root_path, $phpEx;
     global $phpbb_dispatcher, $phpbb_container;
 
+    // Create array of relevant user data
     $user_row = array(
         'username'              => $data['username'],
         'user_password'         => phpbb_hash($data['password']),
@@ -41,11 +45,10 @@ function create_user($data)
         'user_regdate'          => time(),
     );
     
-    // Register user...
+    // Register user
     $user_id = user_add($user_row);
 
     http_response_code(200);
-    
 }
 
 create_user($data);

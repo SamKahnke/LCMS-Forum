@@ -5,8 +5,8 @@ $phpEx = substr(strrchr(__FILE__, '.'), 1);
 include($phpbb_root_path . 'common.' . $phpEx);
 include($phpbb_root_path . 'includes/functions_posting.' . $phpEx);
 
-$message = $request->variable('message', '\'\'');
-$subject = $request->variable('subject', '\'\'');
+$message = $request->variable('message', '');
+$subject = $request->variable('subject', '');
 $user_id = $request->variable('user_id', 1);
 $forum_id = $request->variable('forum_id', 1);
 $mode = 'post';

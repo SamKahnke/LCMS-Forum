@@ -11,27 +11,49 @@ const schema: ObjectSchema = joi
     .object()
     .keys({
         params: joi.object().keys({
-            name: joi
+            username: joi
                 .string()
-                .description("Create a new user")
+                .description("The new user's unique username")
                 .required(),
             password: joi
                 .string()
-                .required() 
+                .description("The new user's unique password")
+                .required(),
+            email: joi
+                .string()
+                .description("The new user's unique email")
+                .required(),
+            tz: joi
+                .string()
+                .description("The user's timezone key. eg: UTC")
+                .required(),
+            lang: joi
+                .string()
+                .description("The user's language key. eg: en")
+                .required()
         })
     })
     .options({ allowUnknown: true });
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createUser.php";
-    const { username, user_password } = request.query;
-    const params: object = {
+    const { username, password, email, tz, lang} = request.query;
+
+    const queryParams: object = {
         username,
-        user_password
+        password,
+        email,
+        tz,
+        lang
     }
 
+    var queryString = Object.keys(queryParams)
+        .map(k => k + '=' + queryParams[k])
+        .join('&');
+
+    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createUser.php?" + queryString;
+
     try {
-        const result = await PHPBB_POST(url, params);
+        const result = await PHPBB_POST(url);
         response.send(result.data);
     } catch (err) {
         console.error(err.message);
