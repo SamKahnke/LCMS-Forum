@@ -338,8 +338,8 @@
         "signature": "a468181917acdd1120fd92e768e898354994e508a1dbeea97b20741d464d6f9e"
       },
       "./types.ts": {
-        "version": "af6ae3e4ee67fbba80913ea1e3e2f4fd95987b9c469c46c15d4ff9b461edf941",
-        "signature": "e2b6c491183534fa2b9fbacdab2028b97b4088ed69ab9b585bd8af73de60a45d"
+        "version": "66537bf53bd580923c410a6c71880792bde3f4fc2adaf176e9508bbfd3bb6112",
+        "signature": "85720d253ba66031bfd0c6b6a353143bc3257a75e495be8d09be4f9617cd43e4"
       },
       "./node_modules/@types/mime/index.d.ts": {
         "version": "059316c26fba6ca3fea7934cacf24544363c104cf3223e94036a9c2c054dc728",
@@ -365,6 +365,14 @@
         "version": "2f81556d24c8ec13fe631a8d62d7074f4b987fac650b82585d323dd9e08f3080",
         "signature": "648831abbcb676ef7f3d29cc3824e44e88a7e9c64c4e6b562e3b7b130b062991"
       },
+      "./node_modules/@types/swagger-ui-express/index.d.ts": {
+        "version": "2105e938d796237ebe848b4b79b19feedab956074529fd074db4fcee7b15a0fb",
+        "signature": "2105e938d796237ebe848b4b79b19feedab956074529fd074db4fcee7b15a0fb"
+      },
+      "./services/utils.ts": {
+        "version": "1e7d70add6d438ec3875b1dd8b4d6d62d32a90f35eec75f9dafdb5623f258880",
+        "signature": "bfb6ccbd8c2209fe7028a454d7ad55c4da39c8fa8eb01076652919841b8fcc4f"
+      },
       "./node_modules/axios/index.d.ts": {
         "version": "2c6db68adaec59aeb3ba2be86b06c29549f8a53d02b838507d1a5875149b9af8",
         "signature": "2c6db68adaec59aeb3ba2be86b06c29549f8a53d02b838507d1a5875149b9af8"
@@ -386,7 +394,7 @@
         "signature": "ccb052fd59fa759f40e33ed3610f76d476146730dc11d78d570caa5d46fd50a2"
       },
       "./handlers/user/createuser.ts": {
-        "version": "7af3b5dc5af046cde5521c0e0e8476a49f561631355e395986067f969fcc4124",
+        "version": "f9a1324025bbebbbab1aac38fdf3d4ab7b118d2ea1658cb7ea502ff60af5b54c",
         "signature": "04807a97139aa5722a126fb01126c186d6396cc02e1d7f586d3a3382d982975b"
       },
       "./handlers/user/deleteuser.ts": {
@@ -454,7 +462,7 @@
         "signature": "a2b6c226c949c8e67bb956b3c1a0fc08832fd2ba56ca1b57bd92521c084c9475"
       },
       "./handlers/topic/createtopic.ts": {
-        "version": "989c2dc85b61208fa84a7e63b586ddde9a51b26b58b0e932e5b8f983057c7016",
+        "version": "0ec2ef67d791268e3edbdf3cebe6cb16e8423f0840ebe955d5ef86eacb5e9276",
         "signature": "884451d5162f2d60c4fc419ccb90a340604ad2abdbe0fe810a03d9c357bfca07"
       },
       "./handlers/topic/deletetopic.ts": {
@@ -466,7 +474,7 @@
         "signature": "7db2dcc819ec5336fad1cab71abb25a9969443a57199150a2e2d19f269d97467"
       },
       "./server.ts": {
-        "version": "1801476a3b8739fdae2d2e176952f4874f898d8ab27667326c56c8fb19a18662",
+        "version": "69eff48b9907a842c6de9ce31e287a3d3ec54e5764c97470f34a06069b444142",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "./test1.ts": {
@@ -480,10 +488,6 @@
       "./node_modules/@types/hapi__joi/index.d.ts": {
         "version": "a3950c915b66babbea991f82c648728181724cca11654610c412be72311c4f40",
         "signature": "a3950c915b66babbea991f82c648728181724cca11654610c412be72311c4f40"
-      },
-      "./node_modules/@types/swagger-ui-express/index.d.ts": {
-        "version": "2105e938d796237ebe848b4b79b19feedab956074529fd074db4fcee7b15a0fb",
-        "signature": "2105e938d796237ebe848b4b79b19feedab956074529fd074db4fcee7b15a0fb"
       }
     },
     "options": {
@@ -967,6 +971,16 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "./node_modules/@types/swagger-ui-express/index.d.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/serve-static/index.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./services/utils.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./node_modules/axios/index.d.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
@@ -1121,6 +1135,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1141,6 +1156,8 @@
       "./server.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./middleware/joivalidation.ts",
+        "./node_modules/@types/swagger-ui-express/index.d.ts",
+        "./services/utils.ts",
         "./handlers/login/login.ts",
         "./handlers/user/getusers.ts",
         "./handlers/user/getuserbyid.ts",
@@ -1178,12 +1195,6 @@
       ],
       "./node_modules/@types/hapi__joi/index.d.ts": [
         "./node_modules/@types/hapi__joi/index.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "./node_modules/@types/swagger-ui-express/index.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/serve-static/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ]
@@ -1655,6 +1666,12 @@
       "./middleware/joivalidation.ts": [
         "./node_modules/@types/express/index.d.ts"
       ],
+      "./node_modules/@types/swagger-ui-express/index.d.ts": [
+        "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/serve-static/index.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./node_modules/axios/index.d.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
@@ -1735,12 +1752,6 @@
       ],
       "./node_modules/@types/hapi__joi/index.d.ts": [
         "./node_modules/@types/hapi__joi/index.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "./node_modules/@types/swagger-ui-express/index.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/serve-static/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ]
@@ -1837,11 +1848,14 @@
       "./node_modules/@types/body-parser/index.d.ts",
       "./node_modules/@types/express/index.d.ts",
       "./middleware/joivalidation.ts",
+      "./node_modules/@types/swagger-ui-express/index.d.ts",
+      "./services/utils.ts",
       "./node_modules/axios/index.d.ts",
       "./services/axiosservice.ts",
       "./handlers/login/login.ts",
       "./handlers/user/getusers.ts",
       "./handlers/user/getuserbyid.ts",
+      "./handlers/user/createuser.ts",
       "./handlers/user/deleteuser.ts",
       "./handlers/group/getgroups.ts",
       "./handlers/group/getgroupbyid.ts",
@@ -1861,12 +1875,10 @@
       "./handlers/topic/createtopic.ts",
       "./handlers/topic/deletetopic.ts",
       "./handlers/topic/closetopic.ts",
-      "./server.ts",
       "./test1.ts",
       "./node_modules/@types/cors/index.d.ts",
       "./node_modules/@types/hapi__joi/index.d.ts",
-      "./node_modules/@types/swagger-ui-express/index.d.ts",
-      "./handlers/user/createuser.ts"
+      "./server.ts"
     ]
   },
   "version": "3.6.2"

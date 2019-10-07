@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const JoiValidation_1 = require("./middleware/JoiValidation");
+const swagger_ui_express_1 = require("swagger-ui-express");
+const Utils_1 = require("./services/Utils");
 // Login
 const login_1 = require("./handlers/login/login");
 // User
@@ -30,10 +32,21 @@ const getTopicById_1 = require("./handlers/topic/getTopicById");
 const createTopic_1 = require("./handlers/topic/createTopic");
 const deleteTopic_1 = require("./handlers/topic/deleteTopic");
 const closeTopic_1 = require("./handlers/topic/closeTopic");
+const swaggerObjects = [
+    createTopic_1.default.swagger
+];
+const swaggerJson = Utils_1.BuildSwaggerJson(swaggerObjects);
+const options = {
+    customCss: `
+        ::placeholder { visibility: hidden; }
+        .swagger-ui .parameter__enum { display: none; }
+        .swagger-ui .try-out__btn { display: none; }`
+};
 (async () => {
     try {
         const port = +(process.env.APP_PORT || 2500);
         const app = express();
+        app.use("/documentation", swagger_ui_express_1.serve, swagger_ui_express_1.setup(swaggerJson, options));
         //--- GET ---//
         // User
         app.get(getUsers_1.default.route, getUsers_1.default.handler);

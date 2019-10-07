@@ -7,4 +7,5 @@ export interface RouteConfigObject {
     tag: string;
     schema: ObjectSchema;
     handler: RequestHandlerParams;
+    swagger?: any;
 }

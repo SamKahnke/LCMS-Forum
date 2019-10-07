@@ -5,19 +5,11 @@ $phpEx = substr(strrchr(__FILE__, '.'), 1);
 include($phpbb_root_path . 'common.' . $phpEx);
 include($phpbb_root_path . 'includes/functions_user.' . $phpEx);
 
-$username = $request->variable('username', 'test');
-$password = $request->variable('password', 'testp');
-$email = $request->variable('email', 'e@mail.com');
-$tz = $request->variable('tz', 'UTC');
-$lang = $request->variable('lang', 'en');
-
-// At this point, the $data array should contain the validated input fields for
-// username, password, email, timezone (tz) and the user’s chosen language (lang).
-// $username = 'testuser3';
-// $password = 'testpassword3';
-// $email = 'test3@gmail.com';
-// $tz = 'UTC';
-// $lang = 'en';
+$username = $request->variable('username', '');
+$password = $request->variable('password', '');
+$email = $request->variable('email', '');
+$tz = $request->variable('tz', '');
+$lang = $request->variable('lang', '');
 
 $data = array(  
     'username'            => $username, 

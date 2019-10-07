@@ -10,7 +10,7 @@ const tag: string = "User";
 const schema: ObjectSchema = joi
     .object()
     .keys({
-        params: joi.object().keys({
+        query: joi.object().keys({
             username: joi
                 .string()
                 .description("The new user's unique username")
@@ -42,8 +42,8 @@ const handler = async (request: express.Request, response: express.Response): Pr
         username,
         password,
         email,
-        tz,
-        lang
+        tz: tz || 'UTC',
+        lang: lang || 'en'
     }
 
     var queryString = Object.keys(queryParams)

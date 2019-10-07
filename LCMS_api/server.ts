@@ -1,5 +1,7 @@
 import * as express from "express";
 import JoiValidation from "./middleware/JoiValidation";
+import { serve, setup } from "swagger-ui-express";
+import { BuildSwaggerJson } from "./services/Utils";
 
 // Login
 import LoginConfig from "./handlers/login/login";
@@ -34,10 +36,24 @@ import CreateTopicConfig from "./handlers/topic/createTopic";
 import DeleteTopicConfig from "./handlers/topic/deleteTopic";
 import CloseTopicConfig from "./handlers/topic/closeTopic";
 
+const swaggerObjects: any = [
+    CreateTopicConfig.swagger
+]
+
+const swaggerJson = BuildSwaggerJson(swaggerObjects);
+const options = {
+    customCss: `
+        ::placeholder { visibility: hidden; }
+        .swagger-ui .parameter__enum { display: none; }
+        .swagger-ui .try-out__btn { display: none; }`
+};
+
 (async () => {
     try {
         const port: number = +(process.env.APP_PORT || 2500);
         const app: express.Express = express();
+
+        app.use("/documentation", serve, setup(swaggerJson, options));
 
     //--- GET ---//
         // User
