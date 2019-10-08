@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/forum/:id/user/:user_id`;
-const summary = "Add user to a forum";
-const tag = "Forum";
 const schema = joi
     .object()
     .keys({
@@ -13,13 +14,13 @@ const schema = joi
             .number()
             .integer()
             .min(0)
-            .description("The PHPBB Forum Id")
+            .description("[REQUIRED] The PHPBB Forum Id")
             .required(),
         user_id: joi
             .number()
             .integer()
             .min(0)
-            .description("The PHPBB User Id")
+            .description("[REQUIRED] The PHPBB User Id")
             .required()
     }),
     query: joi.object().keys({
@@ -41,6 +42,17 @@ const schema = joi
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/forum/:id/user/:user_id",
+    value: {
+        post: {
+            tags: ["Forum"],
+            summary: "Add a single user to a forum",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
     const { id: forum_id, user_id: user_id } = request.params;
     const { auth_option_id, auth_role_id, auth_setting } = request.query;
@@ -55,7 +67,7 @@ const handler = async (request, response) => {
     var queryString = Object.keys(queryParams)
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
-    let url = "http://localhost/rivertown/phpbb/LCMS_api/addUserToForum.php?" + queryString;
+    const url = `${phpbbPrefix}/addUserToForum.php?${queryString}`;
     try {
         const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);
@@ -69,10 +81,9 @@ const handler = async (request, response) => {
 };
 const AddUserToForumConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = AddUserToForumConfig;
 //# sourceMappingURL=addUserToForum.js.map

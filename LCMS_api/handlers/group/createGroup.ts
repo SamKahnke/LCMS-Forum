@@ -3,6 +3,10 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 
 const route: string = `/group`;
 const summary: string = "Create group";
@@ -13,7 +17,7 @@ const schema: ObjectSchema = joi
         query: joi.object().keys({
             group_name: joi
                 .string()
-                .description("The name of the new group")
+                .description("[REQUIRED] The name of the new group")
                 .required(),
             group_desc: joi
                 .string()
@@ -21,6 +25,19 @@ const schema: ObjectSchema = joi
         })
     })
     .options({ allowUnknown: true });
+
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/group",
+    value: {
+        post: {
+            tags: ["Group"],
+            summary: "Create a new group",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
     
@@ -36,7 +53,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createGroup.php?" + queryString;
+    const url: string = `${phpbbPrefix}/createGroup.php?${queryString}`;
 
     try {
         const result = await PHPBB_POST(url);
@@ -51,10 +68,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const CreateGroupConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default CreateGroupConfig;

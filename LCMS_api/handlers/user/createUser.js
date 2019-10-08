@@ -2,36 +2,48 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/user`;
-const summary = "Create user";
-const tag = "User";
 const schema = joi
     .object()
     .keys({
     query: joi.object().keys({
         username: joi
             .string()
-            .description("The new user's unique username")
+            .description("[REQUIRED] The new user's unique username")
             .required(),
         password: joi
             .string()
-            .description("The new user's unique password")
+            .description("[REQUIRED] The new user's unique password")
             .required(),
         email: joi
             .string()
-            .description("The new user's unique email")
+            .description("[REQUIRED] The new user's unique email")
             .required(),
         tz: joi
             .string()
-            .description("The user's timezone key. eg: UTC")
+            .description("[REQUIRED] The user's timezone key. eg: UTC")
             .required(),
         lang: joi
             .string()
-            .description("The user's language key. eg: en")
+            .description("[REQUIRED] The user's language key. eg: en")
             .required()
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/user",
+    value: {
+        post: {
+            tags: ["User"],
+            summary: "Create a new user and encrypt password",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
     const { username, password, email, tz, lang } = request.query;
     const queryParams = {
@@ -44,7 +56,7 @@ const handler = async (request, response) => {
     var queryString = Object.keys(queryParams)
         .map(k => k + '=' + queryParams[k])
         .join('&');
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/createUser.php?" + queryString;
+    const url = `${phpbbPrefix}/createUser.php?${queryString}`;
     try {
         const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);
@@ -58,10 +70,9 @@ const handler = async (request, response) => {
 };
 const CreateUserConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = CreateUserConfig;
 //# sourceMappingURL=createUser.js.map

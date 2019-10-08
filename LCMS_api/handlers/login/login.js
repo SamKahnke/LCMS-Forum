@@ -2,24 +2,36 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbLoginPrefix = config.phpbbLoginPrefix;
 const route = `/login`;
-const summary = "Log user in";
-const tag = "Login";
 const schema = joi
     .object()
     .keys({
     query: joi.object().keys({
         username: joi
             .string()
-            .description("The user's username")
+            .description("[REQUIRED] The user's username")
             .required(),
         password: joi
             .string()
-            .description("The user's password")
+            .description("[REQUIRED] The user's password")
             .required()
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/login",
+    value: {
+        post: {
+            tags: ["Login"],
+            summary: "Log user in. Must redirect to desired page after",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
     const { username, password } = request.query;
     const queryParams = {
@@ -30,7 +42,7 @@ const handler = async (request, response) => {
     var queryString = Object.keys(queryParams)
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
-    const url = "http://localhost/rivertown/phpbb/ucp.php?mode=login" + queryString;
+    const url = `${phpbbLoginPrefix}/ucp.php?mode=login${queryString}`;
     try {
         const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);
@@ -44,10 +56,9 @@ const handler = async (request, response) => {
 };
 const LoginConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = LoginConfig;
 //# sourceMappingURL=login.js.map

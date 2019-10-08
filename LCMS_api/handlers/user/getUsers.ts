@@ -3,26 +3,31 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_GET } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
 
-const route: string = `/user`;
-const summary: string = "Get all users";
-const tag: string = "User";
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
+
+const route: string = `/users`;
 const schema: ObjectSchema = joi
     .object()
-    // .keys({
-    //     params: joi.object().keys({
-    //         id: joi
-    //             .number()
-    //             .integer()
-    //             .positive()
-    //             .description("The PHPBB Group Id")
-    //             .required()
-    //     })
-    // })
     .options({ allowUnknown: true });
 
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/users",
+    value: {
+        get: {
+            tags: ["User"],
+            summary: "Get all users",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
+
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getUsers.php";
+    const url: string = `${phpbbPrefix}/getUsers.php`;
 
     try {
         const result = await PHPBB_GET(url);
@@ -37,10 +42,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const GetUsersConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default GetUsersConfig;

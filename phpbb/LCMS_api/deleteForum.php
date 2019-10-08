@@ -18,7 +18,6 @@ function delete_forum($forum_id)
 		array_push($forums_arr, $row);
 	}
     http_response_code(200);
-	echo json_encode($forums_arr);
 }
 
 delete_forum($forum_id);

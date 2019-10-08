@@ -2,24 +2,26 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
-const route = `/group`;
-const summary = "Get all groups";
-const tag = "Group";
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
+const route = `/groups`;
 const schema = joi
     .object()
-    // .keys({
-    //     params: joi.object().keys({
-    //         id: joi
-    //             .number()
-    //             .integer()
-    //             .positive()
-    //             .description("The PHPBB Group Id")
-    //             .required()
-    //     })
-    // })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/groups",
+    value: {
+        get: {
+            tags: ["Group"],
+            summary: "Get all groups",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/getGroups.php";
+    const url = `${phpbbPrefix}/getGroups.php`;
     try {
         const result = await AxiosService_1.PHPBB_GET(url);
         response.send(result.data);
@@ -33,10 +35,9 @@ const handler = async (request, response) => {
 };
 const GetGroupsConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = GetGroupsConfig;
 //# sourceMappingURL=getGroups.js.map

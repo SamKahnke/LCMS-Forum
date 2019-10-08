@@ -1,3 +1,4 @@
 {
-    "phpbbPrefix": "http://localhost/rivertown/phpbb/LCMS_api"
+    "phpbbPrefix": "http://localhost/rivertown/phpbb/LCMS_api",
+    "phpbbLoginPrefix": "http://localhost/rivertown/phpbb"
 }

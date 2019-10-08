@@ -3,6 +3,10 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_GET } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 
 const route: string = `/user/:id`;
 const summary: string = "Get Users by user id";
@@ -15,14 +19,27 @@ const schema: ObjectSchema = joi
                 .number()
                 .integer()
                 .positive()
-                .description("The PHPBB User Id")
+                .description("[REQUIRED] The PHPBB User Id")
                 .required()
         })
     })
     .options({ allowUnknown: true });
 
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/user/:id",
+    value: {
+        get: {
+            tags: ["User"],
+            summary: "Get a single user's data",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
+
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getUserById.php";
+    const url: string = `${phpbbPrefix}/getUserById.php`;
     const { id: user_id } = request.params;
     const params: object = {
         user_id
@@ -41,10 +58,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const GetUserByIdConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default GetUserByIdConfig;

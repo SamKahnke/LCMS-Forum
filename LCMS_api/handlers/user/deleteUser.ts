@@ -3,10 +3,12 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 
 const route: string = `/user/:user_id/delete`;
-const summary: string = "Delete user by user id";
-const tag: string = "User";
 const schema: ObjectSchema = joi
     .object()
     .keys({
@@ -15,11 +17,24 @@ const schema: ObjectSchema = joi
                 .number()
                 .integer()
                 .positive()
-                .description("The PHPBB User Id")
+                .description("[REQUIRED] The PHPBB User Id")
                 .required()
         })
     })
     .options({ allowUnknown: true });
+
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/user/:user_id/delete",
+    value: {
+        post: {
+            tags: ["User"],
+            summary: "Delete a user",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
     const { user_id } = request.params;
@@ -33,7 +48,8 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/deleteUser.php?" + queryString;
+    const url: string = `${phpbbPrefix}/deleteUser.php?${queryString}`;
+
     try {
         const result = await PHPBB_POST(url);
         response.send(result.data);
@@ -47,10 +63,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const DeleteUserConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default DeleteUserConfig;

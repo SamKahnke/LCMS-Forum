@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/forum/:id/user`;
-const summary = "Get users and forum auth info by forum id";
-const tag = "Forum";
 const schema = joi
     .object()
     .keys({
@@ -13,13 +14,24 @@ const schema = joi
             .number()
             .integer()
             .min(0)
-            .description("The PHPBB Forum Id")
+            .description("[REQUIRED] The PHPBB Forum Id")
             .required()
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/forum/:id/user",
+    value: {
+        get: {
+            tags: ["Forum"],
+            summary: "Get all users associated with a forum",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/getForumUsers.php";
+    const url = `${phpbbPrefix}/getForumUsers.php`;
     const { id: forum_id } = request.params;
     const params = {
         forum_id
@@ -37,10 +49,9 @@ const handler = async (request, response) => {
 };
 const GetForumUsersConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = GetForumUsersConfig;
 //# sourceMappingURL=getForumUsers.js.map

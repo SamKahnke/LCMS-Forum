@@ -3,10 +3,12 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 
 const route: string = `/forum/:id/user/:user_id`;
-const summary: string = "Add user to a forum";
-const tag: string = "Forum";
 const schema: ObjectSchema = joi
     .object()
     .keys({
@@ -15,13 +17,13 @@ const schema: ObjectSchema = joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB Forum Id")
+                .description("[REQUIRED] The PHPBB Forum Id")
                 .required(),
             user_id: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The PHPBB User Id")
+                .description("[REQUIRED] The PHPBB User Id")
                 .required()
         }),
         query: joi.object().keys({
@@ -44,6 +46,19 @@ const schema: ObjectSchema = joi
     })
     .options({ allowUnknown: true });
 
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/forum/:id/user/:user_id",
+    value: {
+        post: {
+            tags: ["Forum"],
+            summary: "Add a single user to a forum",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
+
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
     const { id: forum_id, user_id: user_id } = request.params;
     const { auth_option_id, auth_role_id, auth_setting } = request.query;
@@ -61,7 +76,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    let url: string = "http://localhost/rivertown/phpbb/LCMS_api/addUserToForum.php?" + queryString;
+    const url: string = `${phpbbPrefix}/addUserToForum.php?${queryString}`;
 
     try {
         const result = await PHPBB_POST(url);
@@ -76,10 +91,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const AddUserToForumConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default AddUserToForumConfig;

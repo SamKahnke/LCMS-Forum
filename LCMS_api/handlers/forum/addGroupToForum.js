@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/forum/:id/group/:group_id`;
-const summary = "Add group to a forum";
-const tag = "Forum";
 const schema = joi
     .object()
     .keys({
@@ -13,14 +14,16 @@ const schema = joi
             .number()
             .integer()
             .min(0)
-            .description("The PHPBB Forum Id")
+            .description("[REQUIRED] The PHPBB Forum Id")
             .required(),
         group_id: joi
             .number()
             .integer()
             .min(0)
-            .description("The PHPBB Group Id")
-            .required(),
+            .description("[REQUIRED] The PHPBB Group Id")
+            .required()
+    }),
+    query: joi.object().keys({
         auth_option_id: joi
             .number()
             .integer()
@@ -35,10 +38,21 @@ const schema = joi
             .number()
             .integer()
             .min(0)
-            .description("The PHPBB Auth Setting")
+            .description("The PHPBB Auth Setting"),
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/forum/:id/group/:group_id",
+    value: {
+        post: {
+            tags: ["Forum"],
+            summary: "Add a group of users to a forum",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
     const { id: forum_id, group_id: group_id } = request.params;
     const { auth_option_id, auth_role_id, auth_setting } = request.query;
@@ -53,8 +67,9 @@ const handler = async (request, response) => {
     var queryString = Object.keys(queryParams)
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/addGroupToForum.php?" + queryString;
+    const url = `${phpbbPrefix}/addGroupToForum.php?${queryString}`;
     try {
+        console.log(formattedParametersArray);
         const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);
     }
@@ -67,10 +82,9 @@ const handler = async (request, response) => {
 };
 const AddGroupToForumConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = AddGroupToForumConfig;
 //# sourceMappingURL=addGroupToForum.js.map

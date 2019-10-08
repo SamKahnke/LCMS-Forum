@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/forum/:forum_id/delete`;
-const summary = "Delete forum by forum id";
-const tag = "Forum";
 const schema = joi
     .object()
     .keys({
@@ -13,11 +14,22 @@ const schema = joi
             .number()
             .integer()
             .positive()
-            .description("The PHPBB Forum Id")
+            .description("[REQUIRED] The PHPBB Forum Id")
             .required()
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/forum/:forum_id/delete",
+    value: {
+        post: {
+            tags: ["Forum"],
+            summary: "Delete a forum",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
     const { forum_id } = request.params;
     const queryParams = {
@@ -27,7 +39,7 @@ const handler = async (request, response) => {
     var queryString = Object.keys(queryParams)
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/deleteForum.php?" + queryString;
+    const url = `${phpbbPrefix}/deleteForum.php?${queryString}`;
     try {
         const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);
@@ -41,10 +53,9 @@ const handler = async (request, response) => {
 };
 const DeleteForumConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = DeleteForumConfig;
 //# sourceMappingURL=deleteForum.js.map

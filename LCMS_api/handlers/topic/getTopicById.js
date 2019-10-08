@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/topic/:id`;
-const summary = "Get topic by topic id";
-const tag = "Topic";
 const schema = joi
     .object()
     .keys({
@@ -13,13 +14,24 @@ const schema = joi
             .number()
             .integer()
             .positive()
-            .description("The PHPBB Topic Id")
+            .description("[REQUIRED] The PHPBB Topic Id")
             .required()
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/topic/:id",
+    value: {
+        get: {
+            tags: ["Topic"],
+            summary: "Get a single topic's data",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/getTopicById.php";
+    const url = `${phpbbPrefix}/getTopicById.php`;
     const { id: topic_id } = request.params;
     const params = {
         topic_id
@@ -37,10 +49,9 @@ const handler = async (request, response) => {
 };
 const GetTopicByIdConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = GetTopicByIdConfig;
 //# sourceMappingURL=getTopicById.js.map

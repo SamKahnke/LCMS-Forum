@@ -37,13 +37,36 @@ import DeleteTopicConfig from "./handlers/topic/deleteTopic";
 import CloseTopicConfig from "./handlers/topic/closeTopic";
 
 const swaggerObjects: any = [
-    CreateTopicConfig.swagger
+    GetUsersConfig.swagger,
+    GetUserByIdConfig.swagger,
+    CreateUserConfig.swagger,
+    DeleteUserConfig.swagger,
+    GetForumsConfig.swagger,
+    GetForumByIdConfig.swagger,
+    GetForumUsersConfig.swagger,
+    GetForumGroupsConfig.swagger,
+    CreateForumConfig.swagger,
+    DeleteForumConfig.swagger,
+    AddGroupToForumConfig.swagger,
+    AddUserToForumConfig.swagger,
+    GetGroupsConfig.swagger,
+    GetGroupByIdConfig.swagger,
+    CreateGroupConfig.swagger,
+    DeleteGroupConfig.swagger,
+    AddUserToGroupConfig.swagger,
+    GetTopicsConfig.swagger,
+    GetTopicByIdConfig.swagger,
+    CreateTopicConfig.swagger,
+    DeleteTopicConfig.swagger,
+    CloseTopicConfig.swagger,
+    LoginConfig.swagger
 ]
 
 const swaggerJson = BuildSwaggerJson(swaggerObjects);
 const options = {
     customCss: `
         ::placeholder { visibility: hidden; }
+        input { display: none; }
         .swagger-ui .parameter__enum { display: none; }
         .swagger-ui .try-out__btn { display: none; }`
 };

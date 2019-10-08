@@ -2,24 +2,26 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
-const route = `/forum`;
-const summary = "Get all forums";
-const tag = "Forum";
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
+const route = `/forums`;
 const schema = joi
     .object()
-    // .keys({
-    //     params: joi.object().keys({
-    //         id: joi
-    //             .number()
-    //             .integer()
-    //             .positive()
-    //             .description("The PHPBB Group Id")
-    //             .required()
-    //     })
-    // })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/forums",
+    value: {
+        get: {
+            tags: ["Forum"],
+            summary: "Get all forums",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/getForums.php";
+    const url = `${phpbbPrefix}/getForums.php`;
     try {
         const result = await AxiosService_1.PHPBB_GET(url);
         response.send(result.data);
@@ -33,10 +35,9 @@ const handler = async (request, response) => {
 };
 const GetForumsConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = GetForumsConfig;
 //# sourceMappingURL=getForums.js.map

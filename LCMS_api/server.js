@@ -33,12 +33,35 @@ const createTopic_1 = require("./handlers/topic/createTopic");
 const deleteTopic_1 = require("./handlers/topic/deleteTopic");
 const closeTopic_1 = require("./handlers/topic/closeTopic");
 const swaggerObjects = [
-    createTopic_1.default.swagger
+    getUsers_1.default.swagger,
+    getUserById_1.default.swagger,
+    createUser_1.default.swagger,
+    deleteUser_1.default.swagger,
+    getForums_1.default.swagger,
+    getForumById_1.default.swagger,
+    getForumUsers_1.default.swagger,
+    getForumGroups_1.default.swagger,
+    createForum_1.default.swagger,
+    deleteForum_1.default.swagger,
+    addGroupToForum_1.default.swagger,
+    addUserToForum_1.default.swagger,
+    getGroups_1.default.swagger,
+    getGroupById_1.default.swagger,
+    createGroup_1.default.swagger,
+    deleteGroup_1.default.swagger,
+    addUserToGroup_1.default.swagger,
+    getTopics_1.default.swagger,
+    getTopicById_1.default.swagger,
+    createTopic_1.default.swagger,
+    deleteTopic_1.default.swagger,
+    closeTopic_1.default.swagger,
+    login_1.default.swagger
 ];
 const swaggerJson = Utils_1.BuildSwaggerJson(swaggerObjects);
 const options = {
     customCss: `
         ::placeholder { visibility: hidden; }
+        input { display: none; }
         .swagger-ui .parameter__enum { display: none; }
         .swagger-ui .try-out__btn { display: none; }`
 };

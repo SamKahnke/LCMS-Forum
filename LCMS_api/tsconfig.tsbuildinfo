@@ -338,8 +338,8 @@
         "signature": "a468181917acdd1120fd92e768e898354994e508a1dbeea97b20741d464d6f9e"
       },
       "./types.ts": {
-        "version": "66537bf53bd580923c410a6c71880792bde3f4fc2adaf176e9508bbfd3bb6112",
-        "signature": "85720d253ba66031bfd0c6b6a353143bc3257a75e495be8d09be4f9617cd43e4"
+        "version": "9aec71b58e237a411ef5406dff99ca76e2da623139825937ab9aea4beff16d08",
+        "signature": "69c4e6118f5dc50b929551665b8bc59cf63a8167f8a5d861af2abafd0328835e"
       },
       "./node_modules/@types/mime/index.d.ts": {
         "version": "059316c26fba6ca3fea7934cacf24544363c104cf3223e94036a9c2c054dc728",
@@ -370,7 +370,7 @@
         "signature": "2105e938d796237ebe848b4b79b19feedab956074529fd074db4fcee7b15a0fb"
       },
       "./services/utils.ts": {
-        "version": "1e7d70add6d438ec3875b1dd8b4d6d62d32a90f35eec75f9dafdb5623f258880",
+        "version": "ac1599632ee0ec83520905be003d676e3a22815357a705b446d3e626737395c7",
         "signature": "bfb6ccbd8c2209fe7028a454d7ad55c4da39c8fa8eb01076652919841b8fcc4f"
       },
       "./node_modules/axios/index.d.ts": {
@@ -382,99 +382,99 @@
         "signature": "175dfca73ba68138bf6e6deb43acf94ddc48dbed0027a259ee452986e67c27fe"
       },
       "./handlers/login/login.ts": {
-        "version": "784148943895f9378dea3ab148f210c49faa66084d189823c30a1eec8de59c7b",
+        "version": "d3367de3ae4686cef82169438024cb281e8d4393bcf10c1da20c241b167dff93",
         "signature": "75cdd2045b51fa6c0604f49c860b06e28b558cade096075b68c426d4f41d6f6a"
       },
       "./handlers/user/getusers.ts": {
-        "version": "f966a44ea1c5a8d2ced88d7ab0ae61a216aeafd0aa5e491e22d99ccaa397cbfe",
+        "version": "16f13344265de93767dfd4734fcc92f7290b4052e5cf6e7c466a1040b54872b5",
         "signature": "7fc2b2c1a1bade09bc478b6a54591df76c5e32ea34fc1b82bc32dfb99c04828c"
       },
       "./handlers/user/getuserbyid.ts": {
-        "version": "9cc4082bc020beb651b73bbb4b2e98f3790e132b8325d8831787336a44e8f93e",
+        "version": "970c2523d9d432826f86135b292259e28267012b8c92aa4e7476838f89227342",
         "signature": "ccb052fd59fa759f40e33ed3610f76d476146730dc11d78d570caa5d46fd50a2"
       },
       "./handlers/user/createuser.ts": {
-        "version": "f9a1324025bbebbbab1aac38fdf3d4ab7b118d2ea1658cb7ea502ff60af5b54c",
+        "version": "5eabb599a5d0d7c3bde85170db35262e124b6f995297f4b780b7bfd779e7dfb1",
         "signature": "04807a97139aa5722a126fb01126c186d6396cc02e1d7f586d3a3382d982975b"
       },
       "./handlers/user/deleteuser.ts": {
-        "version": "c65fbc77379989053d13b4aad8e200f0198bb9da0f677f0dd1720cf2dfaa7de0",
+        "version": "ef1cfe5643a4a1ed49d35988cb4382a41cc85346feaf659e5bc8b0cf61b7771c",
         "signature": "fe72d402516701eee8ff7df6ab243938a41cae59b29f027017ad2106a78891c2"
       },
       "./handlers/group/getgroups.ts": {
-        "version": "681c6a13cacab3b49f041129f746851a3237724567689f2a2805c7c90c8ab28b",
+        "version": "4090149107454dfb3727213b64f9c0876473c17f12dc15b7c53b678acde514db",
         "signature": "d7b78c17aea9b8155d5e04bbcbd986a82af28f368badaa51b81a7d0bacfcdece"
       },
       "./handlers/group/getgroupbyid.ts": {
-        "version": "a68c7c49cf09d28e2c7249ad0dfd115d9adfc333b0fd2cdf853d01f8ea14d5d6",
+        "version": "e5f13680a25c1e5e2dd87add37b8dbecc3c54f0e51600efdd438e1e288738dbe",
         "signature": "ebc0b2374cbe7a961700e623b1adc5679e2a97218bf865c484c8a67a9eb0691a"
       },
       "./handlers/group/creategroup.ts": {
-        "version": "0515b6bb6dd144ac02db50b23941877c39f0d1dcb2b65c06d78da5829a4a39c0",
+        "version": "bdab16d6e0820e7622dde60bfb4fb8f0de3dd3705b7f78577aef824d28ec5505",
         "signature": "2b36fb7d345945e83d793b5f95fd0a16b40a77b4fbff0d9deeb348bb52a4cdf1"
       },
       "./handlers/group/deletegroup.ts": {
-        "version": "8139d89bd52d89009be62be7c1f9fb534c49f2e4c413070a2d9d109752ca32c3",
+        "version": "31c4514ca1dd8b4d2c913d756252e1f01a3e4f79869927b18559fd2c41ef05fb",
         "signature": "aafcb32e3ef1db0218865132fb953742698ccd8794dbb6d507b5619a702ec023"
       },
       "./handlers/group/addusertogroup.ts": {
-        "version": "5a717f22399fecc7206b2d895527cf19c75c34029b82c74806daba2a806b0818",
+        "version": "9c0eae627873e4505fcbb31deece006f612ce9a198a731586d69223865041bd4",
         "signature": "cd00fc4ac4b8729458431d4058e2966d9d30b429a61f136094ff1c498ec16656"
       },
       "./handlers/forum/getforums.ts": {
-        "version": "d860c653bb3c8194f31d0a0066f8b1c534c3fc4e4836ddeba9550cf7270847b5",
+        "version": "7b7986068e14ad3a0e019fc5b8d84f4fcf57f24a5d2da39e4d1bb9eb49b3ae7b",
         "signature": "df50e67df1b99f9c0968309620b65d1ffa6263cc119e25d324d570e85b47c918"
       },
       "./handlers/forum/getforumbyid.ts": {
-        "version": "f1770c067c75a755836d221c7c33d26f2a6bf0e6971230522e2132e72b6ebc84",
+        "version": "20dad797399363a0cb5c2bee8cf01f0ef645a4809f81479a25e01e32c0aa7914",
         "signature": "83e3a74421046d70becfb07be2a8816a02966eaa8596bed8eb1bffcb4d9d5ebb"
       },
       "./handlers/forum/deleteforum.ts": {
-        "version": "8fb3e6b225354924766ffc1e1b7adad97bd870a90a5844bb3833347174cc8159",
+        "version": "89ff769beac175a9166832c1919651a66cb78a9761d331fe52d02a45a4451cd0",
         "signature": "80d9c8b78afe336f38a652789e5e787b74398ef9d986478f1ddbf999471b4814"
       },
       "./handlers/forum/getforumusers.ts": {
-        "version": "cae529a149fa1532c620e890f508d3e7ad9d063c2e0bbc8dfc82fd77ae70473d",
+        "version": "6b97ffd99fa082ae0a11fe59fa7568a766f3e2125d8d689fcd253185f45e7eef",
         "signature": "f5e21eec6fd59bcbcc3d8d28f4ce6e253d89ce41a71293196eaf6604774aa7bc"
       },
       "./handlers/forum/getforumgroups.ts": {
-        "version": "baff372ee44ee6d132b0f4b5db54965f0a0ebd7434d0d2ab53f38ca1531c7a66",
+        "version": "c5d726f547eec2b426080be3ee6e6087a2f5b63b688d11b106a801b550f31669",
         "signature": "26c5cd8ef817bf545a4ba934695586358bd44e1c44e9359d90c9f5cbc877ea56"
       },
       "./handlers/forum/addusertoforum.ts": {
-        "version": "569d577084de85f23a499d63098f7a9ae47025fa538fbf5a85aac041c652c06d",
+        "version": "64f7fc69b66bbd5c5d299a6a3e85e39a31f8b754c605c26e2c89904adcfb690a",
         "signature": "5152c4c7d3a2de796251fc7f5cdac21a77ea20aa6d59eb94307070c47bf9f611"
       },
       "./handlers/forum/createforum.ts": {
-        "version": "0fc0dd4f273d8d8e96c19f7811b72d0192d7c727aa3cccdb75baaa77d5c30a80",
+        "version": "67d9e78b734aa1a3ca68fb6e579ddc6395513dbd3c550d9d6c0f32c41450b2be",
         "signature": "5677e79ea653046e9d814ba25fd3635ab96c8f9a221b8c79fa5f824d69139cb9"
       },
       "./handlers/forum/addgrouptoforum.ts": {
-        "version": "2908342114f87ae161fb65dbfd3991384f170b183369818c5e3697e5b973dc5e",
+        "version": "07c3d89b17500ace20fbbd528de446f8cbc0c3f9d500bb581d00c0aad302fa16",
         "signature": "6687c47a94442322e0f8b3f3da5f53c2272144137a5b809338808f681970f9dd"
       },
       "./handlers/topic/gettopics.ts": {
-        "version": "2a6e4cd52a13667fe54f7c34b01a485d9e980d48d6185f4f0efcd820ff05437e",
+        "version": "c905ffe1a58af67d435d5cf961e3afb512749ae62611ef8e341f677128cea675",
         "signature": "4e08596fd6a9316f740ca53a867b852fc7b05e01ec317dd5d23a02a92922cf9c"
       },
       "./handlers/topic/gettopicbyid.ts": {
-        "version": "aef0309c39c62406117a30b3169274c61a46ade17cdb387edf074484e80742e6",
+        "version": "b609e7ac856065401801c83b473c70777b82194d823a8dc3f2429738346bd3d8",
         "signature": "a2b6c226c949c8e67bb956b3c1a0fc08832fd2ba56ca1b57bd92521c084c9475"
       },
       "./handlers/topic/createtopic.ts": {
-        "version": "0ec2ef67d791268e3edbdf3cebe6cb16e8423f0840ebe955d5ef86eacb5e9276",
+        "version": "bcc5bc769d0f1783f6b746b8d8bbbeb0d204c6f9ac815d3cb38d614d7265481e",
         "signature": "884451d5162f2d60c4fc419ccb90a340604ad2abdbe0fe810a03d9c357bfca07"
       },
       "./handlers/topic/deletetopic.ts": {
-        "version": "03c30ec6110dde6ae5cb614a84e7c093dabbe12f9ade70172a5902fcfdba88e4",
+        "version": "e0362201b760db3e388aa3a628440ed592eef0738ad2fddb927972252c844f8e",
         "signature": "c16b2171e6ed9aa2fa2a1bcfc4499b72ff91110b3b9802e332594084b1d3477f"
       },
       "./handlers/topic/closetopic.ts": {
-        "version": "b9bb7f6f79df471137e3f208dfd83f26c8236323d1dc8d977789150cdd7ed666",
+        "version": "866245fbdb9e5b1d03f8cc73dc1439bad14a103d6500beed91b508fc5f71199c",
         "signature": "7db2dcc819ec5336fad1cab71abb25a9969443a57199150a2e2d19f269d97467"
       },
       "./server.ts": {
-        "version": "69eff48b9907a842c6de9ce31e287a3d3ec54e5764c97470f34a06069b444142",
+        "version": "60713558e8762937002e17206f980d0ef14d8e0e62e7e061c3592326f4d23ed3",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "./test1.ts": {
@@ -995,6 +995,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1002,6 +1003,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1009,6 +1011,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1016,6 +1019,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1023,6 +1027,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1030,6 +1035,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1037,6 +1043,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1044,6 +1051,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1051,6 +1059,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1058,6 +1067,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1065,6 +1075,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1072,6 +1083,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1079,6 +1091,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1086,6 +1099,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1093,6 +1107,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1100,6 +1115,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1107,6 +1123,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1114,6 +1131,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1121,6 +1139,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1128,6 +1147,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1143,6 +1163,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1150,6 +1171,7 @@
         "./node_modules/@types/express/index.d.ts",
         "./services/axiosservice.ts",
         "./types.ts",
+        "./services/utils.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],

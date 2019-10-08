@@ -121,7 +121,6 @@ function create_forum($parent_id, $left_id, $right_id, $forum_parents,
     . $forum_topics_softdeleted
     . ')'; 
 
-	echo $sql;
 	$result = $db->sql_query($sql);
 
 	http_response_code(200);

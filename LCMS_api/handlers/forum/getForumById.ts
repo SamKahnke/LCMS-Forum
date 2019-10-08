@@ -3,10 +3,12 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_GET } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 
 const route: string = `/forum/:id`;
-const summary: string = "Get forum by forum id";
-const tag: string = "Forum";
 const schema: ObjectSchema = joi
     .object()
     .keys({
@@ -15,14 +17,27 @@ const schema: ObjectSchema = joi
                 .number()
                 .integer()
                 .positive()
-                .description("The PHPBB Forum Id")
+                .description("[REQUIRED] The PHPBB Forum Id")
                 .required()
         })
     })
     .options({ allowUnknown: true });
 
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/forum/:id",
+    value: {
+        get: {
+            tags: ["Forum"],
+            summary: "Get a single forum's data",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
+
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getForumById.php";
+    const url: string = `${phpbbPrefix}/getForumById.php`;
     const { id: forum_id } = request.params;
     const params: object = {
         forum_id
@@ -41,10 +56,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const GetForumByIdConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default GetForumByIdConfig;

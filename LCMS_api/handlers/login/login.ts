@@ -3,28 +3,42 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbLoginPrefix = config.phpbbLoginPrefix;
 
 const route: string = `/login`;
-const summary: string = "Log user in";
-const tag: string = "Login";
 const schema: ObjectSchema = joi
     .object()
     .keys({
         query: joi.object().keys({
             username: joi
                 .string()
-                .description("The user's username")
+                .description("[REQUIRED] The user's username")
                 .required(),
             password: joi
                 .string()
-                .description("The user's password")
+                .description("[REQUIRED] The user's password")
                 .required()
         })
     })
     .options({ allowUnknown: true });
 
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/login",
+    value: {
+        post: {
+            tags: ["Login"],
+            summary: "Log user in. Must redirect to desired page after",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
+
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    
     const { username, password } = request.query;
 
     const queryParams: object = {
@@ -37,7 +51,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    const url: string = "http://localhost/rivertown/phpbb/ucp.php?mode=login" + queryString;
+    const url: string = `${phpbbLoginPrefix}/ucp.php?mode=login${queryString}`;
 
     try {
         const result = await PHPBB_POST(url);
@@ -52,10 +66,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const LoginConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default LoginConfig;

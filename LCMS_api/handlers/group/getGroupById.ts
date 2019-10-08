@@ -3,10 +3,12 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_GET } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 
 const route: string = `/group/:id`;
-const summary: string = "Get group by group id";
-const tag: string = "Group";
 const schema: ObjectSchema = joi
     .object()
     .keys({
@@ -15,14 +17,27 @@ const schema: ObjectSchema = joi
                 .number()
                 .integer()
                 .positive()
-                .description("The PHPBB Group Id")
+                .description("[REQUIRED] The PHPBB Group Id")
                 .required()
         })
     })
     .options({ allowUnknown: true });
 
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/group/:id",
+    value: {
+        get: {
+            tags: ["Group"],
+            summary: "Get a single group's data",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
+
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/getGroupById.php";
+    const url: string = `${phpbbPrefix}/getGroupById.php`;
     const { id: group_id } = request.params;
     const params: object = {
         group_id
@@ -41,10 +56,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const GetGroupByIdConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default GetGroupByIdConfig;

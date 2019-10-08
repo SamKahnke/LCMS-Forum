@@ -3,10 +3,12 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 
 const route: string = `/topic/:topic_id/delete`;
-const summary: string = "Delete topic by topic id";
-const tag: string = "Topic";
 const schema: ObjectSchema = joi
     .object()
     .keys({
@@ -15,11 +17,24 @@ const schema: ObjectSchema = joi
                 .number()
                 .integer()
                 .positive()
-                .description("The PHPBB Topic Id")
+                .description("[REQUIRED] The PHPBB Topic Id")
                 .required()
         })
     })
     .options({ allowUnknown: true });
+
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/topic/:topic_id/delete",
+    value: {
+        post: {
+            tags: ["Topic"],
+            summary: "Delete a topic",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
     const { topic_id } = request.params;
@@ -33,7 +48,8 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/deleteTopic.php?" + queryString;
+    const url: string = `${phpbbPrefix}/deleteTopic.php?${queryString}`;
+
     try {
         const result = await PHPBB_POST(url);
         response.send(result.data);
@@ -47,10 +63,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const DeleteTopicConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default DeleteTopicConfig;

@@ -2,28 +2,29 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/forum`;
-const summary = "Create forum";
-const tag = "Forum";
 const schema = joi
     .object()
     .keys({
     query: joi.object().keys({
         forum_name: joi
             .string()
-            .description("The name of the new forum")
+            .description("[REQUIRED] The name of the new forum")
             .required(),
         left_id: joi
             .number()
             .integer()
             .min(0)
-            .description("The left id in the forum tree")
+            .description("[REQUIRED] The left id in the forum tree. Must be unique")
             .required(),
         right_id: joi
             .number()
             .integer()
             .min(0)
-            .description("The right id in the forum tree")
+            .description("[REQUIRED] The right id in the forum tree. Must be unique and 1 greater than left_id")
             .required(),
         parent_id: joi
             .number()
@@ -39,6 +40,17 @@ const schema = joi
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/forum",
+    value: {
+        post: {
+            tags: ["Forum"],
+            summary: "Create a new forum",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
     const { forum_name, left_id, right_id, parent_id, forum_parents, forum_desc } = request.query;
     const queryParams = {
@@ -53,7 +65,7 @@ const handler = async (request, response) => {
     var queryString = Object.keys(queryParams)
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/createForum.php?" + queryString;
+    const url = `${phpbbPrefix}/createForum.php?${queryString}`;
     try {
         const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);
@@ -67,10 +79,9 @@ const handler = async (request, response) => {
 };
 const CreateForumConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = CreateForumConfig;
 //# sourceMappingURL=createForum.js.map

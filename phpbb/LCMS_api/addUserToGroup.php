@@ -19,7 +19,6 @@ function add_user_to_group($user_id, $group_id, $group_leader, $user_pending)
     
     $sql_2 = 'UPDATE ' . USERS_TABLE . ' SET user_permissions = \'\' WHERE user_id = ' . $user_id;
 
-    echo $sql_1;
     $result = $db->sql_query($sql_1);
     $db->sql_freeresult($result);
     $result = $db->sql_query($sql_2);

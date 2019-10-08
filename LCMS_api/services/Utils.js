@@ -12,7 +12,6 @@ exports.formatParametersArray = (schema) => {
     const pathParamsArray = Object.keys(pathParams).map(key => {
         pathParams[key].in = "path";
         pathParams[key].name = key;
-        pathParams[key].required = true;
         return pathParams[key];
     });
     return pathParamsArray.concat(queryParamsArray);
@@ -23,7 +22,7 @@ exports.BuildSwaggerJson = (swaggerObjects) => {
         swagger: "2.0",
         info: {
             version: "3.0.0",
-            title: "ITM TwentyFirst Connect API",
+            title: "LCMS API",
             licence: "UNLICENCED"
         },
         consumes: ["application/json"],
@@ -32,8 +31,24 @@ exports.BuildSwaggerJson = (swaggerObjects) => {
         basepath: "/",
         tags: [
             {
+                name: "User",
+                description: "PHPBB user management"
+            },
+            {
+                name: "Forum",
+                description: "PHPBB forums, accessible only to assigned users"
+            },
+            {
+                name: "Group",
+                description: "PHPBB groups for adding multiple users to a forum at once"
+            },
+            {
                 name: "Topic",
-                description: "A phpbb discussion topic"
+                description: "PHPBB discussion topic management"
+            },
+            {
+                name: "Login",
+                description: "User login"
             }
         ],
         schemes: ["http", "https"],

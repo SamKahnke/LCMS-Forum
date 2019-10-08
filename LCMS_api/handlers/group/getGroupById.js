@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/group/:id`;
-const summary = "Get group by group id";
-const tag = "Group";
 const schema = joi
     .object()
     .keys({
@@ -13,13 +14,24 @@ const schema = joi
             .number()
             .integer()
             .positive()
-            .description("The PHPBB Group Id")
+            .description("[REQUIRED] The PHPBB Group Id")
             .required()
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/group/:id",
+    value: {
+        get: {
+            tags: ["Group"],
+            summary: "Get a single group's data",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/getGroupById.php";
+    const url = `${phpbbPrefix}/getGroupById.php`;
     const { id: group_id } = request.params;
     const params = {
         group_id
@@ -37,10 +49,9 @@ const handler = async (request, response) => {
 };
 const GetGroupByIdConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = GetGroupByIdConfig;
 //# sourceMappingURL=getGroupById.js.map

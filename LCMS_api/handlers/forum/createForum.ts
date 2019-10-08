@@ -3,29 +3,31 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 
 const route: string = `/forum`;
-const summary: string = "Create forum";
-const tag: string = "Forum";
 const schema: ObjectSchema = joi
     .object()
     .keys({
         query: joi.object().keys({
             forum_name: joi
                 .string()
-                .description("The name of the new forum")
+                .description("[REQUIRED] The name of the new forum")
                 .required(),
             left_id: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The left id in the forum tree")
+                .description("[REQUIRED] The left id in the forum tree. Must be unique")
                 .required(),
             right_id: joi
                 .number()
                 .integer()
                 .min(0)
-                .description("The right id in the forum tree")
+                .description("[REQUIRED] The right id in the forum tree. Must be unique and 1 greater than left_id")
                 .required(),
             parent_id: joi
                 .number()
@@ -41,6 +43,19 @@ const schema: ObjectSchema = joi
         })
     })
     .options({ allowUnknown: true });
+
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/forum",
+    value: {
+        post: {
+            tags: ["Forum"],
+            summary: "Create a new forum",
+            parameters: formattedParametersArray
+        }  
+    }  
+};
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
     
@@ -60,7 +75,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createForum.php?" + queryString;
+    const url: string = `${phpbbPrefix}/createForum.php?${queryString}`;
 
     try {
         const result = await PHPBB_POST(url);
@@ -75,10 +90,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const CreateForumConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default CreateForumConfig;

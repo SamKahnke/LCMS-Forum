@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/group/:group_id/user/:user_id`;
-const summary = "Add user to a group";
-const tag = "Group";
 const schema = joi
     .object()
     .keys({
@@ -13,14 +14,16 @@ const schema = joi
             .number()
             .integer()
             .min(0)
-            .description("The PHPBB User Id")
+            .description("[REQUIRED] The PHPBB User Id")
             .required(),
         group_id: joi
             .number()
             .integer()
             .min(0)
-            .description("The PHPBB Group Id")
+            .description("[REQUIRED] The PHPBB Group Id")
             .required(),
+    }),
+    query: joi.object().keys({
         group_leader: joi
             .number()
             .integer()
@@ -34,6 +37,17 @@ const schema = joi
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/group/:group_id/user/:user_id",
+    value: {
+        post: {
+            tags: ["Group"],
+            summary: "Add a user to a group",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
     const { user_id: user_id, group_id: group_id } = request.params;
     const { group_leader, user_pending } = request.query;
@@ -47,7 +61,7 @@ const handler = async (request, response) => {
     var queryString = Object.keys(queryParams)
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/addUserToGroup.php?" + queryString;
+    const url = `${phpbbPrefix}/addUserToGroup.php?${queryString}`;
     try {
         const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);
@@ -61,10 +75,9 @@ const handler = async (request, response) => {
 };
 const AddUserToGroupConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = AddUserToGroupConfig;
 //# sourceMappingURL=addUserToGroup.js.map

@@ -3,37 +3,52 @@ import * as joi from "joi";
 import { ObjectSchema } from "joi";
 import { PHPBB_POST } from "../../services/AxiosService";
 import { RouteConfigObject } from "../../Types";
+import { formatParametersArray } from "../../services/Utils";
+
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 
 const route: string = `/user`;
-const summary: string = "Create user";
-const tag: string = "User";
 const schema: ObjectSchema = joi
     .object()
     .keys({
         query: joi.object().keys({
             username: joi
                 .string()
-                .description("The new user's unique username")
+                .description("[REQUIRED] The new user's unique username")
                 .required(),
             password: joi
                 .string()
-                .description("The new user's unique password")
+                .description("[REQUIRED] The new user's unique password")
                 .required(),
             email: joi
                 .string()
-                .description("The new user's unique email")
+                .description("[REQUIRED] The new user's unique email")
                 .required(),
             tz: joi
                 .string()
-                .description("The user's timezone key. eg: UTC")
+                .description("[REQUIRED] The user's timezone key. eg: UTC")
                 .required(),
             lang: joi
                 .string()
-                .description("The user's language key. eg: en")
+                .description("[REQUIRED] The user's language key. eg: en")
                 .required()
         })
     })
     .options({ allowUnknown: true });
+
+const formattedParametersArray = formatParametersArray(schema);
+
+const swagger: any = {
+    route: "/user",
+    value: {
+        post: {
+            tags: ["User"],
+            summary: "Create a new user and encrypt password",
+            parameters: formattedParametersArray
+        }    
+    }  
+};
 
 const handler = async (request: express.Request, response: express.Response): Promise<void> => {
     const { username, password, email, tz, lang} = request.query;
@@ -50,7 +65,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => k + '=' + queryParams[k])
         .join('&');
 
-    const url: string = "http://localhost/rivertown/phpbb/LCMS_api/createUser.php?" + queryString;
+    const url: string = `${phpbbPrefix}/createUser.php?${queryString}`;
 
     try {
         const result = await PHPBB_POST(url);
@@ -65,10 +80,9 @@ const handler = async (request: express.Request, response: express.Response): Pr
 
 const CreateUserConfig: RouteConfigObject = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 }
 
 export default CreateUserConfig;

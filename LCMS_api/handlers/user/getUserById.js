@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const joi = require("joi");
 const AxiosService_1 = require("../../services/AxiosService");
+const Utils_1 = require("../../services/Utils");
+const config = require("../../config/config.json");
+const phpbbPrefix = config.phpbbPrefix;
 const route = `/user/:id`;
 const summary = "Get Users by user id";
 const tag = "User";
@@ -13,13 +16,24 @@ const schema = joi
             .number()
             .integer()
             .positive()
-            .description("The PHPBB User Id")
+            .description("[REQUIRED] The PHPBB User Id")
             .required()
     })
 })
     .options({ allowUnknown: true });
+const formattedParametersArray = Utils_1.formatParametersArray(schema);
+const swagger = {
+    route: "/user/:id",
+    value: {
+        get: {
+            tags: ["User"],
+            summary: "Get a single user's data",
+            parameters: formattedParametersArray
+        }
+    }
+};
 const handler = async (request, response) => {
-    const url = "http://localhost/rivertown/phpbb/LCMS_api/getUserById.php";
+    const url = `${phpbbPrefix}/getUserById.php`;
     const { id: user_id } = request.params;
     const params = {
         user_id
@@ -37,10 +51,9 @@ const handler = async (request, response) => {
 };
 const GetUserByIdConfig = {
     route,
-    summary,
-    tag,
     schema,
-    handler
+    handler,
+    swagger
 };
 exports.default = GetUserByIdConfig;
 //# sourceMappingURL=getUserById.js.map
