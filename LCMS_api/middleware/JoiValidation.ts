@@ -6,7 +6,8 @@ const JoiValidation = (schema: ObjectSchema) => (req: express.Request, res: expr
     const validate: joi.ValidationResult<express.Request> = joi.validate(req, schema, { abortEarly: false });
     if(validate.error) {
         const errorMessage: string = validate.error.details.reduce((msg, error, index) => index === 0 ? error.message : `${msg}, ${error.message}`, "");
-
+        console.log(req.params);
+        console.log(req.method);
         res.status(400).json({
             message: errorMessage
         });

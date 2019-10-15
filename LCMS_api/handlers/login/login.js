@@ -42,7 +42,7 @@ const handler = async (request, response) => {
     var queryString = Object.keys(queryParams)
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
-    const url = `${phpbbLoginPrefix}/ucp.php?mode=login${queryString}`;
+    const url = `${phpbbLoginPrefix}/ucp.php?mode=login&${queryString}`;
     try {
         const result = await AxiosService_1.PHPBB_POST(url);
         response.send(result.data);

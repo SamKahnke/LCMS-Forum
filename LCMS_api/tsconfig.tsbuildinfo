@@ -362,7 +362,7 @@
         "signature": "0f42a08e16c34cda8b53ba12ee949757136be5bbb1de84d5b16f42c6c23b2482"
       },
       "./middleware/joivalidation.ts": {
-        "version": "2f81556d24c8ec13fe631a8d62d7074f4b987fac650b82585d323dd9e08f3080",
+        "version": "7349405c32e144fc209afe00bcfccb0eef748a24561537f5c66935ad2ceffb92",
         "signature": "648831abbcb676ef7f3d29cc3824e44e88a7e9c64c4e6b562e3b7b130b062991"
       },
       "./node_modules/@types/swagger-ui-express/index.d.ts": {
@@ -382,7 +382,7 @@
         "signature": "175dfca73ba68138bf6e6deb43acf94ddc48dbed0027a259ee452986e67c27fe"
       },
       "./handlers/login/login.ts": {
-        "version": "d3367de3ae4686cef82169438024cb281e8d4393bcf10c1da20c241b167dff93",
+        "version": "48458abd30909a0c4e0bd56818cea6dcaa34738ac478a1fffb8fdea15b0c146c",
         "signature": "75cdd2045b51fa6c0604f49c860b06e28b558cade096075b68c426d4f41d6f6a"
       },
       "./handlers/user/getusers.ts": {

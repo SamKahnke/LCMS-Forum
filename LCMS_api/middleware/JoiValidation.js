@@ -13,4 +13,3 @@ const JoiValidation = (schema) => (req, res, next) => {
     next();
 };
 exports.default = JoiValidation;
-//# sourceMappingURL=JoiValidation.js.map

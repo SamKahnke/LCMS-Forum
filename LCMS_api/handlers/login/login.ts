@@ -51,7 +51,7 @@ const handler = async (request: express.Request, response: express.Response): Pr
         .map(k => esc(k) + '=' + esc(queryParams[k]))
         .join('&');
 
-    const url: string = `${phpbbLoginPrefix}/ucp.php?mode=login${queryString}`;
+    const url: string = `${phpbbLoginPrefix}/ucp.php?mode=login&${queryString}`;
 
     try {
         const result = await PHPBB_POST(url);
