@@ -104,6 +104,10 @@ class phpbb_cache_container extends Symfony\Component\DependencyInjection\Contai
             'dbal.conn.driver' => 'getDbal_Conn_DriverService',
             'dbal.tools' => 'getDbal_ToolsService',
             'dispatcher' => 'getDispatcherService',
+            'eparsons.restapi.controller.auth' => 'getEparsons_Restapi_Controller_AuthService',
+            'eparsons.restapi.controller.users' => 'getEparsons_Restapi_Controller_UsersService',
+            'eparsons.restapi.listener' => 'getEparsons_Restapi_ListenerService',
+            'eparsons.restapi.validation' => 'getEparsons_Restapi_ValidationService',
             'ext.manager' => 'getExt_ManagerService',
             'feed.factory' => 'getFeed_FactoryService',
             'feed.forum' => 'getFeed_ForumService',
@@ -183,6 +187,27 @@ class phpbb_cache_container extends Symfony\Component\DependencyInjection\Contai
             'passwords.update.lock' => 'getPasswords_Update_LockService',
             'path_helper' => 'getPathHelperService',
             'php_ini' => 'getPhpIniService',
+            'phpbb.skeleton.collection' => 'getPhpbb_Skeleton_CollectionService',
+            'phpbb.skeleton.command.create' => 'getPhpbb_Skeleton_Command_CreateService',
+            'phpbb.skeleton.controller' => 'getPhpbb_Skeleton_ControllerService',
+            'phpbb.skeleton.ext.skeleton.acp' => 'getPhpbb_Skeleton_Ext_Skeleton_AcpService',
+            'phpbb.skeleton.ext.skeleton.build' => 'getPhpbb_Skeleton_Ext_Skeleton_BuildService',
+            'phpbb.skeleton.ext.skeleton.console' => 'getPhpbb_Skeleton_Ext_Skeleton_ConsoleService',
+            'phpbb.skeleton.ext.skeleton.controller' => 'getPhpbb_Skeleton_Ext_Skeleton_ControllerService',
+            'phpbb.skeleton.ext.skeleton.cron' => 'getPhpbb_Skeleton_Ext_Skeleton_CronService',
+            'phpbb.skeleton.ext.skeleton.ext' => 'getPhpbb_Skeleton_Ext_Skeleton_ExtService',
+            'phpbb.skeleton.ext.skeleton.htmllistener' => 'getPhpbb_Skeleton_Ext_Skeleton_HtmllistenerService',
+            'phpbb.skeleton.ext.skeleton.mcp' => 'getPhpbb_Skeleton_Ext_Skeleton_McpService',
+            'phpbb.skeleton.ext.skeleton.migration' => 'getPhpbb_Skeleton_Ext_Skeleton_MigrationService',
+            'phpbb.skeleton.ext.skeleton.notification' => 'getPhpbb_Skeleton_Ext_Skeleton_NotificationService',
+            'phpbb.skeleton.ext.skeleton.phplistener' => 'getPhpbb_Skeleton_Ext_Skeleton_PhplistenerService',
+            'phpbb.skeleton.ext.skeleton.service' => 'getPhpbb_Skeleton_Ext_Skeleton_ServiceService',
+            'phpbb.skeleton.ext.skeleton.tests' => 'getPhpbb_Skeleton_Ext_Skeleton_TestsService',
+            'phpbb.skeleton.ext.skeleton.travis' => 'getPhpbb_Skeleton_Ext_Skeleton_TravisService',
+            'phpbb.skeleton.ext.skeleton.ucp' => 'getPhpbb_Skeleton_Ext_Skeleton_UcpService',
+            'phpbb.skeleton.helper.packager' => 'getPhpbb_Skeleton_Helper_PackagerService',
+            'phpbb.skeleton.helper.validator' => 'getPhpbb_Skeleton_Helper_ValidatorService',
+            'phpbb.skeleton.listener' => 'getPhpbb_Skeleton_ListenerService',
             'plupload' => 'getPluploadService',
             'profilefields.lang_helper' => 'getProfilefields_LangHelperService',
             'profilefields.manager' => 'getProfilefields_ManagerService',
@@ -851,6 +876,7 @@ class phpbb_cache_container extends Symfony\Component\DependencyInjection\Contai
         $instance->add('console.command.fixup.recalculate_email_hash');
         $instance->add('console.command.fixup.update_hashes');
         $instance->add('console.command.fixup.fix_left_right_ids');
+        $instance->add('phpbb.skeleton.command.create');
 
         return $instance;
     }
@@ -1290,12 +1316,66 @@ class phpbb_cache_container extends Symfony\Component\DependencyInjection\Contai
     {
         $this->services['dispatcher'] = $instance = new \phpbb\event\dispatcher($this);
 
+        $instance->addSubscriberService('eparsons.restapi.listener', 'eparsons\\restapi\\event\\event_listener');
+        $instance->addSubscriberService('phpbb.skeleton.listener', 'phpbb\\skeleton\\event\\main_listener');
         $instance->addSubscriberService('kernel_request_subscriber', 'phpbb\\event\\kernel_request_subscriber');
         $instance->addSubscriberService('kernel_exception_subscriber', 'phpbb\\event\\kernel_exception_subscriber');
         $instance->addSubscriberService('kernel_terminate_subscriber', 'phpbb\\event\\kernel_terminate_subscriber');
         $instance->addSubscriberService('symfony_response_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener');
 
         return $instance;
+    }
+
+    /**
+     * Gets the 'eparsons.restapi.controller.auth' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \eparsons\restapi\controller\auth\Authentication A eparsons\restapi\controller\auth\Authentication instance.
+     */
+    protected function getEparsons_Restapi_Controller_AuthService()
+    {
+        return $this->services['eparsons.restapi.controller.auth'] = new \eparsons\restapi\controller\auth\Authentication($this->get('request'), $this->get('auth'), $this->get('user'), $this->get('eparsons.restapi.validation'), $this->get('config'));
+    }
+
+    /**
+     * Gets the 'eparsons.restapi.controller.users' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \eparsons\restapi\controller\users\Users A eparsons\restapi\controller\users\Users instance.
+     */
+    protected function getEparsons_Restapi_Controller_UsersService()
+    {
+        return $this->services['eparsons.restapi.controller.users'] = new \eparsons\restapi\controller\users\Users($this->get('user'), $this->get('eparsons.restapi.validation'));
+    }
+
+    /**
+     * Gets the 'eparsons.restapi.listener' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \eparsons\restapi\event\event_listener A eparsons\restapi\event\event_listener instance.
+     */
+    protected function getEparsons_Restapi_ListenerService()
+    {
+        return $this->services['eparsons.restapi.listener'] = new \eparsons\restapi\event\event_listener($this->get('request'), $this->get('user'), $this->get('config'));
+    }
+
+    /**
+     * Gets the 'eparsons.restapi.validation' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \eparsons\restapi\Validation A eparsons\restapi\Validation instance.
+     */
+    protected function getEparsons_Restapi_ValidationService()
+    {
+        return $this->services['eparsons.restapi.validation'] = new \eparsons\restapi\Validation($this->get('request'));
     }
 
     /**
@@ -2305,6 +2385,297 @@ class phpbb_cache_container extends Symfony\Component\DependencyInjection\Contai
     protected function getPhpIniService()
     {
         return $this->services['php_ini'] = new \phpbb\php\ini();
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.collection' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\di\service_collection A phpbb\di\service_collection instance.
+     */
+    protected function getPhpbb_Skeleton_CollectionService()
+    {
+        $this->services['phpbb.skeleton.collection'] = $instance = new \phpbb\di\service_collection($this);
+
+        $instance->add('phpbb.skeleton.ext.skeleton.phplistener');
+        $instance->add('phpbb.skeleton.ext.skeleton.htmllistener');
+        $instance->add('phpbb.skeleton.ext.skeleton.acp');
+        $instance->add('phpbb.skeleton.ext.skeleton.mcp');
+        $instance->add('phpbb.skeleton.ext.skeleton.ucp');
+        $instance->add('phpbb.skeleton.ext.skeleton.migration');
+        $instance->add('phpbb.skeleton.ext.skeleton.service');
+        $instance->add('phpbb.skeleton.ext.skeleton.controller');
+        $instance->add('phpbb.skeleton.ext.skeleton.ext');
+        $instance->add('phpbb.skeleton.ext.skeleton.console');
+        $instance->add('phpbb.skeleton.ext.skeleton.cron');
+        $instance->add('phpbb.skeleton.ext.skeleton.notification');
+        $instance->add('phpbb.skeleton.ext.skeleton.tests');
+        $instance->add('phpbb.skeleton.ext.skeleton.travis');
+        $instance->add('phpbb.skeleton.ext.skeleton.build');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.command.create' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\console\create A phpbb\skeleton\console\create instance.
+     */
+    protected function getPhpbb_Skeleton_Command_CreateService()
+    {
+        return $this->services['phpbb.skeleton.command.create'] = new \phpbb\skeleton\console\create($this->get('user'), $this->get('phpbb.skeleton.helper.packager'), $this->get('phpbb.skeleton.helper.validator'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.controller' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\controller\main A phpbb\skeleton\controller\main instance.
+     */
+    protected function getPhpbb_Skeleton_ControllerService()
+    {
+        return $this->services['phpbb.skeleton.controller'] = new \phpbb\skeleton\controller\main($this->get('config'), $this->get('controller.helper'), $this->get('request'), $this->get('phpbb.skeleton.helper.packager'), $this->get('phpbb.skeleton.helper.validator'), $this->get('template'), $this->get('user'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.acp' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_AcpService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.acp'] = new \phpbb\skeleton\skeleton('acp', false, array(), array(0 => 'acp/main_info.php', 1 => 'acp/main_module.php', 2 => 'adm/style/acp_demo_body.html', 3 => 'language/en/common.php', 4 => 'language/en/info_acp_demo.php', 5 => 'migrations/install_acp_module.php'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.build' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_BuildService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.build'] = new \phpbb\skeleton\skeleton('build', false, array(), array(0 => 'build.xml'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.console' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_ConsoleService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.console'] = new \phpbb\skeleton\skeleton('console', false, array(), array(0 => 'config/services.yml', 1 => 'console/command/demo.php', 2 => 'language/en/cli.php'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.controller' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_ControllerService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.controller'] = new \phpbb\skeleton\skeleton('controller', false, array(), array(0 => 'config/routing.yml', 1 => 'config/services.yml', 2 => 'event/main_listener.php', 3 => 'language/en/common.php', 4 => 'controller/main.php', 5 => 'styles/prosilver/template/demo_body.html', 6 => 'styles/prosilver/template/event/overall_header_navigation_prepend.html'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.cron' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_CronService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.cron'] = new \phpbb\skeleton\skeleton('cron', false, array(), array(0 => 'config/services.yml', 1 => 'cron/task/demo.php', 2 => 'migrations/install_cron.php'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.ext' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_ExtService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.ext'] = new \phpbb\skeleton\skeleton('ext', false, array(), array(0 => 'ext.php'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.htmllistener' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_HtmllistenerService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.htmllistener'] = new \phpbb\skeleton\skeleton('htmllistener', false, array(), array(0 => 'styles/prosilver/template/event/overall_header_navigation_prepend.html'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.mcp' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_McpService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.mcp'] = new \phpbb\skeleton\skeleton('mcp', false, array(), array(0 => 'mcp/main_info.php', 1 => 'mcp/main_module.php', 2 => 'styles/prosilver/template/mcp_demo_body.html', 3 => 'language/en/info_mcp_demo.php', 4 => 'migrations/install_mcp_module.php'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.migration' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_MigrationService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.migration'] = new \phpbb\skeleton\skeleton('migration', false, array(), array(0 => 'migrations/install_acp_module.php', 1 => 'migrations/install_mcp_module.php', 2 => 'migrations/install_ucp_module.php', 3 => 'migrations/install_user_schema.php'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.notification' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_NotificationService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.notification'] = new \phpbb\skeleton\skeleton('notification', false, array(), array(0 => 'ext.php', 1 => 'config/services.yml', 2 => 'notification/type/demo.php', 3 => 'language/en/common.php', 4 => 'language/en/info_ucp_demo.php'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.phplistener' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_PhplistenerService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.phplistener'] = new \phpbb\skeleton\skeleton('phplistener', false, array(), array(0 => 'config/services.yml', 1 => 'event/main_listener.php'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.service' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_ServiceService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.service'] = new \phpbb\skeleton\skeleton('service', false, array(), array(0 => 'service.php', 1 => 'config/services.yml', 2 => 'config/parameters.yml'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.tests' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_TestsService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.tests'] = new \phpbb\skeleton\skeleton('tests', false, array(), array(0 => 'tests/controller/main_test.php', 1 => 'tests/dbal/fixtures/config.xml', 2 => 'tests/dbal/simple_test.php', 3 => 'tests/functional/demo_test.php', 4 => 'phpunit.xml.dist'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.travis' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_TravisService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.travis'] = new \phpbb\skeleton\skeleton('travis', false, array(0 => 'tests'), array(0 => 'travis/prepare-phpbb.sh', 1 => '.travis.yml'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.ext.skeleton.ucp' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\skeleton A phpbb\skeleton\skeleton instance.
+     */
+    protected function getPhpbb_Skeleton_Ext_Skeleton_UcpService()
+    {
+        return $this->services['phpbb.skeleton.ext.skeleton.ucp'] = new \phpbb\skeleton\skeleton('ucp', false, array(), array(0 => 'ucp/main_info.php', 1 => 'ucp/main_module.php', 2 => 'styles/prosilver/template/ucp_demo_body.html', 3 => 'language/en/info_ucp_demo.php', 4 => 'migrations/install_ucp_module.php', 5 => 'migrations/install_user_schema.php'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.helper.packager' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\helper\packager A phpbb\skeleton\helper\packager instance.
+     */
+    protected function getPhpbb_Skeleton_Helper_PackagerService()
+    {
+        return $this->services['phpbb.skeleton.helper.packager'] = new \phpbb\skeleton\helper\packager($this->get('user'), $this, $this->get('phpbb.skeleton.collection'), './../');
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.helper.validator' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\helper\validator A phpbb\skeleton\helper\validator instance.
+     */
+    protected function getPhpbb_Skeleton_Helper_ValidatorService()
+    {
+        return $this->services['phpbb.skeleton.helper.validator'] = new \phpbb\skeleton\helper\validator($this->get('user'));
+    }
+
+    /**
+     * Gets the 'phpbb.skeleton.listener' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \phpbb\skeleton\event\main_listener A phpbb\skeleton\event\main_listener instance.
+     */
+    protected function getPhpbb_Skeleton_ListenerService()
+    {
+        return $this->services['phpbb.skeleton.listener'] = new \phpbb\skeleton\event\main_listener($this->get('controller.helper'), $this->get('template'));
     }
 
     /**

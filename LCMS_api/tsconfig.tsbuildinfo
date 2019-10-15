@@ -366,8 +366,8 @@
         "signature": "648831abbcb676ef7f3d29cc3824e44e88a7e9c64c4e6b562e3b7b130b062991"
       },
       "./node_modules/@types/swagger-ui-express/index.d.ts": {
-        "version": "2105e938d796237ebe848b4b79b19feedab956074529fd074db4fcee7b15a0fb",
-        "signature": "2105e938d796237ebe848b4b79b19feedab956074529fd074db4fcee7b15a0fb"
+        "version": "c5f1ca5675c6309ab8cd1d0b3ed161bff56760999386788daddd7e04215c27e4",
+        "signature": "c5f1ca5675c6309ab8cd1d0b3ed161bff56760999386788daddd7e04215c27e4"
       },
       "./services/utils.ts": {
         "version": "ac1599632ee0ec83520905be003d676e3a22815357a705b446d3e626737395c7",
@@ -486,8 +486,8 @@
         "signature": "75a5ac517fc41fdbce6a98709ea10dd440c28c3b5b773339d7d29565a4204e8f"
       },
       "./node_modules/@types/hapi__joi/index.d.ts": {
-        "version": "a3950c915b66babbea991f82c648728181724cca11654610c412be72311c4f40",
-        "signature": "a3950c915b66babbea991f82c648728181724cca11654610c412be72311c4f40"
+        "version": "d0776187424468e8629ebb88ee030f2a7fafe2279c855618ddaf33dd52f200ee",
+        "signature": "d0776187424468e8629ebb88ee030f2a7fafe2279c855618ddaf33dd52f200ee"
       }
     },
     "options": {
@@ -1897,10 +1897,10 @@
       "./handlers/topic/createtopic.ts",
       "./handlers/topic/deletetopic.ts",
       "./handlers/topic/closetopic.ts",
+      "./server.ts",
       "./test1.ts",
       "./node_modules/@types/cors/index.d.ts",
-      "./node_modules/@types/hapi__joi/index.d.ts",
-      "./server.ts"
+      "./node_modules/@types/hapi__joi/index.d.ts"
     ]
   },
   "version": "3.6.2"
